@@ -16,17 +16,15 @@ class CekController extends Controller
     public function __invoke(Request $request)
     {
         $role = Auth::user()->role;
+        $name = Auth::user()->name;
         if($role == "admin"){
-            // alert()->success('Success','Login Berhasil')->autoClose(1000);
-            notify()->success('Login Berhasil');
+            notify()->success("Selamat Datang $name", "Login Berhasil");
             return redirect()->route('pengumuman.index');
         }else if($role == "medis"){
-            // alert()->success('Success','Login Berhasil')->autoClose(1000);
-            notify()->success('Login Berhasil');
+            notify()->success("Selamat Datang $name", "Login Berhasil");
             return redirect()->route('medis');
         }else if($role == "farmasi"){
-            // alert()->success('Success','Login Berhasil')->autoClose(1000);
-            notify()->success('Login Berhasil');
+            notify()->success("Selamat Datang $name", "Login Berhasil");
             return redirect()->route('farmasi');
         }else{
             return back();

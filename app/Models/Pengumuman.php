@@ -9,4 +9,5 @@ class Pengumuman extends Model
 {
     use HasFactory;
     protected $table = 'pengumuman';
+    protected $fillable = ['judul', 'tanggal', 'isi'];
 }

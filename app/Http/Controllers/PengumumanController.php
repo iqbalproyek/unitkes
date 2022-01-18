@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -13,17 +14,9 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        return view('admin.pengumuman');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('admin.pengumuman', [
+            'pengumuman' => Pengumuman::orderby('id', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -34,18 +27,14 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $request->validate([
+            'judul' => ['required'],
+            'tanggal' => ['required'],
+            'isi' => ['required'],
+        ]);
+        Pengumuman::create($request->all());
+        notify()->success('Data Berhasil Ditambahkan', 'Berhasil');
+        return back();
     }
 
     /**
@@ -54,9 +43,13 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pengumuman $pengumuman)
     {
-        //
+        return response()->json([
+            'data' => Pengumuman::find($pengumuman)->first(),
+        ]);
+        // $data = Pengumuman::find($pengumuman);
+        // return response()->json($data);
     }
 
     /**
@@ -66,9 +59,16 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pengumuman $pengumuman)
     {
-        //
+        $request->validate([
+            'judul' => ['required'],
+            'tanggal' => ['required'],
+            'isi' => ['required'],
+        ]);
+        Pengumuman::find($pengumuman->id)->update($request->all());
+        notify()->success('Data Berhasil Diedit', 'Berhasil');
+        return back();
     }
 
     /**
@@ -77,8 +77,10 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pengumuman $pengumuman)
     {
-        //
+        Pengumuman::find($pengumuman->id)->delete();
+        notify()->success('Data Berhasil Dihapus', 'Berhasil');
+        return back();
     }
 }

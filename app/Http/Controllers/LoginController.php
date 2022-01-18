@@ -24,7 +24,7 @@ class LoginController extends Controller
             return redirect()->route('cek.role');
         }
         throw ValidationException::withMessages([
-            notify()->error('Login Gagal'),
+            notify()->error('Username Tidak Ditemukan', 'Login Gagal'),
         ]);
     }
 }

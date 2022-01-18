@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>SB Admin 2 - Dashboard</title>
 
@@ -35,14 +36,8 @@
             <div id="content">
 
                 <x-navbar></x-navbar>
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <x:notify-messages />
+                <x:notify-messages />
                     {{ $slot }}
-
-                </div>
-                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
@@ -107,6 +102,20 @@
     <!-- Page level custom scripts -->
     <script src="/template/js/demo/chart-area-demo.js"></script>
     <script src="/template/js/demo/chart-pie-demo.js"></script>
+
+    {{-- datatable --}}
+    <script src="/template/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/template/vendor/Buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/template/vendor/Buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/template/vendor/JSZip/jszip.min.js"></script>
+    <script src="/template/vendor/pdfmake/pdfmake.min.js"></script>
+    <script src="/template/vendor/pdfmake/vfs_fonts.js"></script>
+    <script src="/template/vendor/Buttons/js/buttons.html5.min.js"></script>
+    <script src="/template/vendor/Buttons/js/buttons.print.min.js"></script>
+    <script src="/template/vendor/Buttons/js/buttons.colVis.min.js"></script>
+
+    <script src="/template/vendor/ckeditor/ckeditor.js"></script>
 
     @notifyJs
 </body>
