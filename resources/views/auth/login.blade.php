@@ -19,20 +19,18 @@
 
     <!-- Custom styles for this template-->
     <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
-
+    @notifyCss
 </head>
 
 <body class="bg-gradient-primary">
 
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-6 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
+                        <x:notify-messages />
                         <!-- Nested Row within Card Body -->
                         <div class="row justify-content-center">
                             <div class="col-lg-12">
@@ -84,7 +82,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/template/js/sb-admin-2.min.js"></script>
-
+    @notifyJs
 </body>
 
 </html>

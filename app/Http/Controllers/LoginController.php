@@ -21,10 +21,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($attributes)){
-            return redirect('dashboard');
+            return redirect()->route('cek.role');
         }
         throw ValidationException::withMessages([
-            'username' => 'User Tidak Ditemukan'
+            notify()->error('Login Gagal'),
         ]);
     }
 }

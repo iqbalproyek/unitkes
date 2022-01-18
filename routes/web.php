@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CekController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PengumumanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function(){
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('login', [LoginController::class, 'create'])->name('login');
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    });
 });
 
-Route::get('dashboard', function () {
-    return view('dashboard');
+Route::middleware('auth')->group(function(){
+    Route::get('cek', CekController::class)->name('cek.role');
+    Route::post('logout', [LogoutController::class, 'store'])->name('logout');
+    Route::resource('pengumuman', PengumumanController::class);
 });
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'create'])->name('login');
+
+
 
 
