@@ -20,10 +20,11 @@
 
     <!-- Custom styles for this template-->
     <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
+    <style type="text/css"> .notify{ z-index: 1000000; } </style>
     @notifyCss
 </head>
+<x:notify-messages />
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -34,11 +35,8 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <x-navbar></x-navbar>
-                <x:notify-messages />
                     {{ $slot }}
-
             </div>
             <!-- End of Main Content -->
 

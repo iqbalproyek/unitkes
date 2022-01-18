@@ -93,10 +93,9 @@
                     </div>
                     </div>
 
-
                     <!-- Modal edit-->
                     <div class="modal fade" id="editBarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Form Edit</h5>
@@ -106,7 +105,7 @@
                             </div>
                             <div class="modal-body">
 
-                            <form action="{{ route('pengumuman.update', $row->id) }}" method="post">
+                            <form action="" id="editpengumuman" method="post">
                             @csrf
                             @method('put')
 
@@ -172,6 +171,7 @@
                     $('#judul2').val(data.data.judul);
                     $('#tanggal2').val(data.data.tanggal);
                     CKEDITOR.instances.isiku.setData(data.data.isi);
+                    $('#editpengumuman').attr('action', 'pengumuman/' + id);
                 }
             });
     }
