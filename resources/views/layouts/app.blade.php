@@ -20,6 +20,13 @@
 
     <!-- Custom styles for this template-->
     <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/template/vendor/Buttons/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/template/vendor/fixedheader/css/fixedHeader.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/template/vendor/responsive/css/responsive.bootstrap4.min.css"/>
+
     <style type="text/css"> .notify{ z-index: 1000000; } </style>
     @notifyCss
 </head>

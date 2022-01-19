@@ -48,8 +48,6 @@ class PengumumanController extends Controller
         return response()->json([
             'data' => Pengumuman::find($pengumuman)->first(),
         ]);
-        // $data = Pengumuman::find($pengumuman);
-        // return response()->json($data);
     }
 
     /**
@@ -62,11 +60,15 @@ class PengumumanController extends Controller
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $request->validate([
-            'judul' => ['required'],
-            'tanggal' => ['required'],
-            'isi' => ['required'],
+            'judul2' => ['required'],
+            'tanggal2' => ['required'],
+            'isi2' => ['required'],
         ]);
-        Pengumuman::find($pengumuman->id)->update($request->all());
+        Pengumuman::find($pengumuman->id)->update([
+            'judul' => $request->judul2,
+            'tanggal' => $request->tanggal2,
+            'isi' => $request->isi2,
+        ]);
         notify()->success('Data Berhasil Diedit', 'Berhasil');
         return back();
     }

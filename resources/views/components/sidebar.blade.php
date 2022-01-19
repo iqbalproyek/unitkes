@@ -15,14 +15,14 @@
     @if(Auth::user()->role == "admin")
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ (request()->is('pengumuman')) ? 'active' : '' }}">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('pengumuman.index') }}">
                 <i class="fas fa-home"></i>
                 <span>Pengumuman</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item {{ (request()->is('petugas')) ? 'active' : '' }}">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('petugas.index') }}">
                 <i class="fas fa-id-card-alt"></i>
                 <span>Data petugas</span></a>
             </li>
