@@ -27,7 +27,7 @@
           <div class="col-sm-6">
           <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" class="form-control @error('nama') is-invalid @enderror me-2" name="nama" id="nama">
+            <input type="text" class="form-control @error('nama') is-invalid @enderror me-2" name="nama" id="nama" readonly>
             @error('nama')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -40,7 +40,7 @@
           <div class="col-md-6">
           <div class="form-group">
             <label for="kategori">kategori</label>
-            <input type="text" class="form-control @error('kategori') is-invalid @enderror me-2" name="kategori" id="kategori">
+            <input type="text" class="form-control @error('kategori') is-invalid @enderror me-2" name="kategori" id="kategori" readonly>
             @error('kategori')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
