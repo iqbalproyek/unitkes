@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CekController;
+use App\Http\Controllers\DashMedisController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +36,19 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('cek', CekController::class)->name('cek.role');
     Route::post('logout', [LogoutController::class, 'store'])->name('logout');
-    Route::resource('pengumuman', PengumumanController::class);
-    Route::resource('petugas', UserController::class);
+
+    //Admin
+    Route::middleware('admin')->group(function(){
+        Route::resource('pengumuman', PengumumanController::class);
+        Route::resource('petugas', UserController::class);
+    });
+
+    //Medis
+    Route::middleware('medis')->group(function(){
+        Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
+        Route::resource('pasien', PasienController::class);
+    });
+
 });
 
 

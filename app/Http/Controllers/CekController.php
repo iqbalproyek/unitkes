@@ -22,7 +22,7 @@ class CekController extends Controller
             return redirect()->route('pengumuman.index');
         }else if($role == "medis"){
             notify()->success("Selamat Datang $name", "Login Berhasil");
-            return redirect()->route('medis');
+            return redirect()->route('dashboard.medis');
         }else if($role == "farmasi"){
             notify()->success("Selamat Datang $name", "Login Berhasil");
             return redirect()->route('farmasi');

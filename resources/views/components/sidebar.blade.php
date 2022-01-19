@@ -30,15 +30,15 @@
         @elseif(Auth::user()->role == "medis")
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ (request()->is('medis')) ? 'active' : '' }}">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{{ route('dashboard.medis') }}">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">
+            <li class="nav-item {{ (request()->is('pasien')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('pasien.index') }}">
                   <i class="fas fa-id-card-alt"></i>
                   <span>Data Pasien</span></a>
               </li>
