@@ -16,7 +16,8 @@
           <div class="col-sm-6">
           <div class="form-group">
             <label for="nik">NIK</label>
-            <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik" onkeyup="search()">
+            <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik">
+            <button class="btn btn-success btn-sm float-right mt-1" type="button" onclick="search()"><i class="fa fa-search"></i> Cari</button>
             @error('nik')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror

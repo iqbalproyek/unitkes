@@ -70,4 +70,22 @@
     function modalhapus(id){
         $('#hapuspasien').attr('action', 'pasien/' + id);
     }
+
+    // fungsi modal edit
+    function search(){
+        var nik = $('#nik').val();
+        var len = nik.length;
+        if (len > 6){
+        $.ajax({
+                url : 'apipasien/'+nik,
+                type: 'get',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data.nama);
+                    $('#nama').val(data.nama);
+                    $('#kategori').val(data.jabatan);
+                }
+        });
+        }
+    }
 </script>

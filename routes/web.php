@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiPasienController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashMedisController;
 use App\Http\Controllers\LoginController;
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('medis')->group(function(){
         Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
         Route::resource('pasien', PasienController::class);
+        Route::get('apipasien/{nik}', [ApiPasienController::class, 'index']);
     });
 
 });
