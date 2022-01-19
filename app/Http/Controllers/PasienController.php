@@ -15,18 +15,8 @@ class PasienController extends Controller
     public function index()
     {
         return view('medis.pasien',[
-            'pasien' => Pasien::orderby('id', 'desc'),
+            'pasien' => Pasien::orderby('id', 'desc')->get(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -37,7 +27,21 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nik' => ['required', 'numeric'],
+            'nama' => ['required'],
+            'hp' => ['required', 'numeric'],
+            'unit' => ['required'],
+            'umur' => ['required', 'numeric'],
+            'tgllahir' => ['required'],
+            'tempat' => ['required'],
+            'kelamin' => ['required'],
+            'kategori' => ['required'],
+            'email' => ['required', 'email'],
+        ]);
+        Pasien::create($request->all());
+        notify()->success('Data berhasil Ditambahkan', 'Berhasil');
+        return back();
     }
 
     /**
@@ -82,6 +86,8 @@ class PasienController extends Controller
      */
     public function destroy(Pasien $pasien)
     {
-        //
+        Pasien::where('id', $pasien->id)->delete();
+        notify()->success('Data berhasil Dihapus', 'berhasil');
+        return back();
     }
 }
