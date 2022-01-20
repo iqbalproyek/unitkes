@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::middleware('auth')->group(function(){
         Route::resource('pasien', PasienController::class);
         Route::get('pasien/filter/{filter}', [PasienController::class,'filter'])->name('pasien.filter');
         Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
+        Route::resource('periksa', PeriksaController::class);
     });
 
 });

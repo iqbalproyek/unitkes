@@ -10,33 +10,28 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <form action="prosescek.php?aksi=tambah" method="post" enctype="multipart/form-data" >
-                                      <?php
-                                      foreach($dsn as $row):
-                                        $email = $row['email'];
-                                      ?>
-                                      <input type="hidden" class="form-control" name="email" id="email" value="<?=$email;?>" >
-                                      <?php endforeach; ?>
-                                      <input type="hidden" name="token" value="<?=$token?>">
+                                      <form action="{{ route('periksa.store') }}" method="post" enctype="multipart/form-data" >
+                                         @csrf
 
                                     <div class="row">
                                       <div class= col-sm-6>
                                           <div class="form-group">
-                                              <label for="id">NIK</label>
-                                              <select name="id_ps" class="form-control" id="id_ps" required>
-                                          <?php
-                                                    $md = mysqli_query($koneksi, "select * from tb_pasien where id_ps = '".$id."'");
-                                                   $data = mysqli_fetch_array($md);
-                                          ?>
-                                          <option value="<?=$data['id_ps'];?>"><?=$data['nik'];?></option>
-                                          </select>
+                                              <label for="id_pasien">NIK</label>
+                                              <select name="id_pasien" class="form-control @error('id_pasien') is-invalid @enderror me-2" id="id_pasien">
+                                              </select>
+                                            @error('id_pasien')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class= col-sm-6>
                                           <div class="form-group">
                                               <label for="tanggal">Tanggal</label>
-                                              <input type="date" class="form-control" name="tanggal" id="tanggal" required="">
+                                              <input type="date" class="form-control @error('tanggal') is-invalid @enderror me-2" name="tanggal" id="tanggal">
+                                              @error('tanggal')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
                                     </div>
@@ -47,12 +42,18 @@
                                               <label for="tekanan darah">Tekanan Darah</label>
                                               <div class="row">
                                               <div class="col-sm-6">
-                                              <input type="text" class="form-control" name="tekanan_darah" id="tekanan_darah">
-                                              </div>
+                                              <input type="text" class="form-control @error('tekanan_darah') is-invalid @enderror me-2" name="tekanan_darah" id="tekanan_darah">
+                                              @error('tekanan_darah')
+                                              <span class="invalid-feedback">{{$message}}</span>
+                                          @enderror
+                                            </div>
                                               /
                                               <div class="col-sm-5">
-                                              <input type="text" class="form-control" name="tekanan_darah2" id="tekanan_darah2">
-                                              </div>
+                                              <input type="text" class="form-control @error('tekanan_darah2') is-invalid @enderror me-2" name="tekanan_darah2" id="tekanan_darah2">
+                                              @error('tekana_darah2')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
+                                                </div>
                                               </div>
                                           </div>
                                       </div>
@@ -60,56 +61,80 @@
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="pulse">Pulse</label>
-                                              <input type="text" class="form-control" name="pulse" id="pulse">
-                                          </div>
+                                              <input type="text" class="form-control @error('pulse') is-invalid @enderror me-2" name="pulse" id="pulse">
+                                              @error('pulse')
+                                              <span class="invalid-feedback">{{$message}}</span>
+                                          @enderror
+                                            </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="hemoglobin">Hemoglobin</label>
-                                              <input type="text" class="form-control" name="hemoglobin" id="hemoglobin">
-                                          </div>
+                                              <input type="text" class="form-control @error('hemoglobin') is-invalid @enderror me-2" name="hemoglobin" id="hemoglobin">
+                                              @error('hemoglobin')
+                                              <span class="invalid-feedback">{{$message}}</span>
+                                          @enderror
+                                            </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="asam_urat">Asam Urat</label>
-                                              <input type="text" class="form-control" name="asam_urat" id="asam_urat">
+                                              <input type="text" class="form-control @error('asam_urat') is-invalid @enderror me-2" name="asam_urat" id="asam_urat">
+                                              @error('asam_urat')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="gula_darah">Gula Darah</label>
-                                              <input type="text" class="form-control" name="gula_darah" id="gula_darah">
+                                              <input type="text" class="form-control @error('gula_darah') is-invalid @enderror me-2" name="gula_darah" id="gula_darah">
+                                              @error('gula_darah')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="kolesterol">Kolesterol</label>
-                                              <input type="text" class="form-control" name="kolesterol" id="kolesterol">
+                                              <input type="text" class="form-control @error('kolesterol') is-invalid @enderror me-2" name="kolesterol" id="kolesterol">
+                                              @error('kolesterol')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="saturasi">Saturasi Oksigen</label>
-                                              <input type="text" class="form-control" name="saturasi" id="saturasi">
+                                              <input type="text" class="form-control @error('saturasi') is-invalid @enderror me-2" name="saturasi" id="saturasi">
+                                              @error('saturasi')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="t_badan">Tinggi Badan</label>
-                                              <input type="text" class="form-control" name="t_badan" id="t_badan">
+                                              <input type="text" class="form-control @error('t_badan') is-invalid @enderror me-2" name="t_badan" id="t_badan">
+                                              @error('t_badan')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
 
                                       <div class="col-sm-2">
                                           <div class="form-group">
                                               <label for="b_badan">Berat Badan</label>
-                                              <input type="text" class="form-control" name="b_badan" id="b_badan">
+                                              <input type="text" class="form-control @error('b_badan') is-invalid @enderror me-2" name="b_badan" id="b_badan">
+                                              @error('b_badan')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                           </div>
                                       </div>
                                     </div>
@@ -121,14 +146,20 @@
                                       <div class= col-sm-6>
                                           <div class="form-group">
                                           <label for="keluhan">Keluhan</label>
-                                          <textarea class="form-control" name="keluhan" id="keluhan" rows="2"></textarea>
+                                          <textarea class="form-control @error('keluhan') is-invalid @enderror me-2" name="keluhan" id="keluhan" rows="2"></textarea>
+                                          @error('keluhan')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                         </div>
                                       </div>
 
                                       <div class= col-sm-6>
                                         <div class="form-group">
                                         <label for="alergi">Riwayat Alergi</label>
-                                          <textarea class="form-control" name="alergi" id="alergi" rows="2"></textarea>
+                                          <textarea class="form-control @error('alergi') is-invalid @enderror me-2" name="alergi" id="alergi" rows="2"></textarea>
+                                          @error('alergi')
+                                          <span class="invalid-feedback">{{$message}}</span>
+                                      @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -137,14 +168,20 @@
                                       <div class= col-sm-6>
                                         <div class="form-group">
                                         <label for="pemeriksaan">Hasil Pemeriksaan</label>
-                                          <textarea class="form-control" name="pemeriksaan" id="pemeriksaan" rows="2"></textarea>
+                                          <textarea class="form-control @error('pemeriksaan') is-invalid @enderror me-2" name="pemeriksaan" id="pemeriksaan" rows="2"></textarea>
+                                          @error('pemeriksaan')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                         </div>
                                       </div>
 
                                       <div class= col-sm-6>
                                         <div class="form-group">
                                         <label for="tindakan">Tindakan</label>
-                                          <textarea class="form-control" name="tindakan" id="tindakan" rows="2"></textarea>
+                                          <textarea class="form-control @error('tindakan') is-invalid @enderror me-2" name="tindakan" id="tindakan" rows="2"></textarea>
+                                          @error('tindakan')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -153,14 +190,20 @@
                                       <div class= col-sm-6>
                                         <div class="form-group">
                                         <label for="terapi">Terapi</label>
-                                          <textarea class="form-control" name="terapi" id="terapi" rows="2"></textarea>
+                                          <textarea class="form-control @error('terapi') is-invalid @enderror me-2" name="terapi" id="terapi" rows="2"></textarea>
+                                          @error('terapi')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                         </div>
                                       </div>
 
                                       <div class= col-sm-6>
                                         <div class="form-group">
                                         <label for="foto">Gambar</label>
-                                          <input type="file" class="form-control" name="foto" id="foto" >
+                                          <input type="file" class="form-control @error('foto') is-invalid @enderror me-2" name="foto" id="foto" >
+                                          @error('foto')
+                                                <span class="invalid-feedback">{{$message}}</span>
+                                            @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -179,7 +222,7 @@
 
 
 {{-- modal hapus cek --}}
-<div id="hapusBarang<?php echo $row['id_cek']; ?>" class="modal fade" role="dialog">
+<div id="hapusBarang" class="modal fade" role="dialog">
 
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -196,9 +239,6 @@
         <div class="modal-body">
 
         <form action="prosescek.php?aksi=hapus" method="post">
-        <input type="hidden" name="token" value="<?=$token?>">
-
-                <input type="hidden" name="id_cek" value="<?php echo $row['id_cek'] ?>">
 
                 <center><h6 class="modal-title">Apakah Anda ingin menghapus data ini ?</h6>
                 <br>

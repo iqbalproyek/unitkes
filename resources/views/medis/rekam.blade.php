@@ -253,8 +253,8 @@
                     <div class="col-xl-8 col-lg-4">
                         <div class="card shadow mt-3">
                             <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pemeriksaan Pasien <a style="margin-left: 420px; text-decoration:none;"
-                            class="text-primary" href="" data-toggle="modal" data-target="#modalTambahBarang"> <i class="fa
+                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pemeriksaan Pasien <a style="text-decoration:none;"
+                            class="text-primary float-right" href="" onclick="modaltambah({{ $pasien->id }}, {{ $pasien->nik }})" data-toggle="modal" data-target="#modalTambahBarang"> <i class="fa
                            fa-plus"></i></a></h6>
                             </div>
                             <div class="card-body">
@@ -282,6 +282,8 @@
                                 </tbody>
                                 </table>
 
+                                @include('medis.modal_rekam')
+
                             </div>
                         </div>
                     </div>
@@ -306,5 +308,11 @@ $(document).ready(function() {
     @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
        $('#editBarang').modal('show');
     @endif
+
+// modal tambah
+function modaltambah(id, nik){
+    console.log(id);
+    $('#id_pasien').append(`<option value="${id}">${nik}</option>`);
+}
 
 </script>
