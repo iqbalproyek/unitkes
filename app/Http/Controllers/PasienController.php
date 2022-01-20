@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasienRequest;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 
@@ -14,20 +15,8 @@ class PasienController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PasienRequest $request)
     {
-        $request->validate([
-            'nik' => ['required', 'numeric'],
-            'nama' => ['required'],
-            'hp' => ['required', 'numeric'],
-            'unit' => ['required'],
-            'umur' => ['required', 'numeric'],
-            'tgllahir' => ['required'],
-            'tempat' => ['required'],
-            'kelamin' => ['required'],
-            'kategori' => ['required'],
-            'email' => ['required', 'email'],
-        ]);
         Pasien::create($request->all());
         notify()->success('Data berhasil Ditambahkan', 'Berhasil');
         return back();
@@ -40,20 +29,8 @@ class PasienController extends Controller
         ]);
     }
 
-    public function update(Request $request, Pasien $pasien)
+    public function update(PasienRequest $request, Pasien $pasien)
     {
-        $request->validate([
-            'nik' => ['required', 'numeric'],
-            'nama' => ['required'],
-            'hp' => ['required', 'numeric'],
-            'unit' => ['required'],
-            'umur' => ['required', 'numeric'],
-            'tgllahir' => ['required'],
-            'tempat' => ['required'],
-            'kelamin' => ['required'],
-            'kategori' => ['required'],
-            'email' => ['required', 'email'],
-        ]);
         Pasien::find($pasien->id)->update($request->all());
         notify()->success('Data Berhasil Diedit', 'Berhasil');
         return back();

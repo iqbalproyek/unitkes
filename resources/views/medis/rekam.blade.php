@@ -4,7 +4,7 @@
 
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb bg-white shadow">
-                    <li class="breadcrumb-item" style="font-size:14px;"><a href="#" onClick="history.go(-1);">Data Pasien</a></li>
+                    <li class="breadcrumb-item" style="font-size:14px;"><a href="#" onClick="location.href='/pasien'">Data Pasien</a></li>
                     <li class="breadcrumb-item active" style="font-size:14px;" aria-current="page">Rekam Medis</li>
                   </ol>
                 </nav>
@@ -123,14 +123,20 @@
                 <div class="col-sm-6">
                 <div class="form-group">
                   <label for="nik">NIK</label>
-                  <input type="text" class="form-control" name="nik" id="nik" readonly onkeyup="search()" value="{{ old('nik', $pasien->nik) }}">
+                  <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik" readonly onkeyup="search()" value="{{ old('nik', $pasien->nik) }}">
+                  @error('nik')
+                    <span class="invalid-feedback">{{$message}}</span>
+                  @enderror
                 </div>
                 </div>
 
                 <div class="col-sm-6">
                 <div class="form-group">
                   <label for="nama">Nama</label>
-                  <input type="text" class="form-control" name="nama" id="nama" value="{{ old('nama', $pasien->nama) }}" readonly>
+                  <input type="text" class="form-control @error('nama') is-invalid @enderror me-2" name="nama" id="nama" value="{{ old('nama', $pasien->nama) }}" readonly>
+                  @error('nama')
+                  <span class="invalid-feedback">{{$message}}</span>
+                  @enderror
                 </div>
                 </div>
 
@@ -140,14 +146,20 @@
                         <div class="col-md-6">
                         <div class="form-group">
                           <label for="kategori">kategori</label>
-                          <input type="text" class="form-control" name="kategori" id="kategori" value="{{ old('kategori', $pasien->kategori) }}" readonly>
+                          <input type="text" class="form-control @error('kategori') is-invalid @enderror me-2" name="kategori" id="kategori" value="{{ old('kategori', $pasien->kategori) }}" readonly>
+                          @error('kategori')
+                          <span class="invalid-feedback">{{$message}}</span>
+                            @enderror
                         </div>
                         </div>
 
                         <div class="col-md-6">
                         <div class="form-group">
-                          <label for="kategori">Email</label>
-                          <input type="text" class="form-control" name="email" id="email" value="{{ old('email', $pasien->email) }}">
+                          <label for="email">Email</label>
+                          <input type="text" class="form-control @error('email') is-invalid @enderror me-2" name="email" id="email" value="{{ old('email', $pasien->email) }}">
+                          @error('email')
+                          <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
                         </div>
@@ -157,14 +169,20 @@
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="hp">Hp</label>
-                        <input type="text" class="form-control" name="hp" id="hp" value="{{ old('hp', $pasien->hp) }}">
+                        <input type="text" class="form-control @error('hp') is-invalid @enderror me-2" name="hp" id="hp" value="{{ old('hp', $pasien->hp) }}">
+                        @error('hp')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="unit">Unit/Jurusan</label>
-                        <input type="text" class="form-control" name="unit" id="unit" value="{{ old('unit', $pasien->unit) }}">
+                        <input type="text" class="form-control @error('unit') is-invalid @enderror me-2" name="unit" id="unit" value="{{ old('unit', $pasien->unit) }}">
+                        @error('unit')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
@@ -175,14 +193,20 @@
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="umur">Umur</label>
-                        <input type="text" class="form-control" name="umur" id="umur" value="{{ old('umur', $pasien->umur) }}">
+                        <input type="text" class="form-control @error('umur') is-invalid @enderror me-2" name="umur" id="umur" value="{{ old('umur', $pasien->umur) }}">
+                        @error('umur')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="tgllahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tgllahir" id="tgllahir" value="{{ old('tgllahir', $pasien->tgllahir->format("Y-m-d")) }}">
+                        <input type="date" class="form-control @error('tgllahir') is-invalid @enderror me-2" name="tgllahir" id="tgllahir" value="{{ old('tgllahir', $pasien->tgllahir->format("Y-m-d")) }}">
+                        @error('tgllahir')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
@@ -193,18 +217,24 @@
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="tempat">Tempat Lahir</label>
-                        <input type="text" class="form-control" name="tempat" id="tempat" value="{{ old('tempat', $pasien->tempat) }}">
+                        <input type="text" class="form-control @error('tempat') is-invalid @enderror me-2" name="tempat" id="tempat" value="{{ old('tempat', $pasien->tempat) }}">
+                        @error('tempat')
+                        <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
                         <div class="col-sm-6">
                         <div class="form-group">
                         <label for="kelamin">Jenis Kelamin</label>
-                        <select class="form-control" name="kelamin" id="kelamin">
+                        <select class="form-control @error('kelamin') is-invalid @enderror me-2" name="kelamin" id="kelamin">
                             <option value="{{ old('kelamin', $pasien->kelamin) }}">{{ old('kelamin', $pasien->kelamin) }}</option>
                             <option value="laki-laki">laki-laki</option>
                             <option value="perempuan">perempuan</option>
                         </select>
+                        @error('kelamin')
+                            <span class="invalid-feedback">{{$message}}</span>
+                        @enderror
                         </div>
                         </div>
 
@@ -265,3 +295,9 @@
                 <!-- /.container-fluid -->
             </div>
 </x-app-layout>
+<script>
+//fungsi modal tambah validation error
+    @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
+       $('#editBarang').modal('show');
+    @endif
+</script>
