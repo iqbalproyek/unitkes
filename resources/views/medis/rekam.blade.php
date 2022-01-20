@@ -15,8 +15,6 @@
                     <h1 class="h3 mb-0 text-gray-800">Rekam Medis</h1>
                   </div>
 
-
-                {{-- foreach data pasien --}}
                   <div class="row">
                       <div class="col-lg-4">
                           <div class="card shadow mt-3">
@@ -102,7 +100,7 @@
                           </div>
                       </div>
 
-            {{-- modal edit user --}}
+        {{-- modal edit user --}}
         <div id="editBarang" class="modal fade" role="dialog">
 
           <div class="modal-dialog modal-lg">
@@ -123,7 +121,7 @@
                 <div class="col-sm-6">
                 <div class="form-group">
                   <label for="nik">NIK</label>
-                  <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik" readonly onkeyup="search()" value="{{ old('nik', $pasien->nik) }}">
+                  <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik" readonly value="{{ old('nik', $pasien->nik) }}">
                   @error('nik')
                     <span class="invalid-feedback">{{$message}}</span>
                   @enderror
@@ -252,8 +250,6 @@
         </div>
         <!--endform modal edit user!-->
 
-              {{-- endforeach detail pasien --}}
-
                     <div class="col-xl-8 col-lg-4">
                         <div class="card shadow mt-3">
                             <div class="card-header py-3">
@@ -262,29 +258,29 @@
                            fa-plus"></i></a></h6>
                             </div>
                             <div class="card-body">
-                  <div class="card-body row">
-                    </div>
-                        <table class="table table-bordered table-stripped" id="tbdosen">
-                        <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>Tanggal</th>
-                            <th>Aksi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{-- foreach data cek --}}
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a href="tb_rekam.php?view=" class="btn btn-sm btn-info">Detail</a>
-                                <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusBarang">Hapus</a>
-                            </td>
-                        </tr>
-                    {{-- endforeach data cek --}}
-                        </tbody>
-                        </table>
+                            <div class="card-body row">
+                            </div>
+                                <table class="table table-bordered table-stripped" id="tbdosen">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Tanggal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- foreach data cek --}}
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="tb_rekam.php?view=" class="btn btn-sm btn-info">Detail</a>
+                                            <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusBarang">Hapus</a>
+                                        </td>
+                                    </tr>
+                                {{-- endforeach data cek --}}
+                                </tbody>
+                                </table>
 
                             </div>
                         </div>
@@ -296,8 +292,19 @@
             </div>
 </x-app-layout>
 <script>
+// datatable
+$(document).ready(function() {
+    var table = $('#tbdosen').DataTable( {
+        lengthChange: true,
+    } );
+
+    table.buttons().container()
+        .appendTo( '#tbdosen_wrapper .col-md-6:eq(0)' );
+} );
+
 //fungsi modal tambah validation error
     @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
        $('#editBarang').modal('show');
     @endif
+
 </script>

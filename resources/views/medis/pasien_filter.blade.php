@@ -88,7 +88,7 @@
        $('#modalTambahBarang').modal('show');
     @endif
 
-    // fungsi modal edit
+    // fungsi get api
     function search(){
         var nik = $('#nik').val();
         var len = nik.length;
