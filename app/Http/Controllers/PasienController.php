@@ -90,4 +90,9 @@ class PasienController extends Controller
         notify()->success('Data berhasil Dihapus', 'berhasil');
         return back();
     }
+
+    public function filter($filter)
+    {
+        
+    }
 }
