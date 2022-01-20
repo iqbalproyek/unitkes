@@ -16,7 +16,7 @@
           <div class="col-sm-6">
           <div class="form-group">
             <label for="nik">NIK</label>
-            <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik">
+            <input type="text" class="form-control @error('nik') is-invalid @enderror me-2" name="nik" id="nik" value="{{ old('nik') }}">
             <button class="btn btn-success btn-sm float-right mt-1" type="button" onclick="search()"><i class="fa fa-search"></i> Cari</button>
             @error('nik')
                 <span class="invalid-feedback">{{$message}}</span>
@@ -50,7 +50,7 @@
           <div class="col-md-6">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror me-2" name="email" id="email">
+            <input type="text" class="form-control @error('email') is-invalid @enderror me-2" name="email" id="email" value="{{ old('email') }}">
             @error('email')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -63,7 +63,7 @@
           <div class="col-sm-6">
           <div class="form-group">
           <label for="hp">Hp</label>
-            <input type="text" class="form-control @error('hp') is-invalid @enderror me-2" name="hp" id="hp">
+            <input type="text" class="form-control @error('hp') is-invalid @enderror me-2" name="hp" id="hp" value="{{ old('hp') }}">
             @error('hp')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -73,7 +73,7 @@
           <div class="col-sm-6">
           <div class="form-group">
           <label for="unit">Unit/Jurusan</label>
-            <input type="text" class="form-control @error('unit') is-invalid @enderror me-2" name="unit" id="unit">
+            <input type="text" class="form-control @error('unit') is-invalid @enderror me-2" name="unit" id="unit" value="{{ old('unit') }}">
             @error('unit')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -87,7 +87,7 @@
           <div class="col-sm-6">
           <div class="form-group">
           <label for="umur">Umur</label>
-            <input type="text" class="form-control @error('umur') is-invalid @enderror me-2" name="umur" id="umur">
+            <input type="text" class="form-control @error('umur') is-invalid @enderror me-2" name="umur" id="umur" value="{{ old('umur') }}">
             @error('umur')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -97,7 +97,7 @@
           <div class="col-sm-6">
           <div class="form-group">
           <label for="tgllahir">Tanggal Lahir</label>
-            <input type="date" class="form-control @error('tgllahir') is-invalid @enderror me-2" name="tgllahir" id="tgllahir">
+            <input type="date" class="form-control @error('tgllahir') is-invalid @enderror me-2" name="tgllahir" id="tgllahir" value="{{ old('tgllahir') }}">
             @error('tgllahir')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror
@@ -111,7 +111,7 @@
           <div class="col-sm-6">
           <div class="form-group">
           <label for="tempat">Tempat Lahir</label>
-            <input type="text" class="form-control @error('tempat') is-invalid @enderror me-2" name="tempat" id="tempat">
+            <input type="text" class="form-control @error('tempat') is-invalid @enderror me-2" name="tempat" id="tempat" value="{{ old('tempat') }}">
             @error('tempat')
                 <span class="invalid-feedback">{{$message}}</span>
             @enderror

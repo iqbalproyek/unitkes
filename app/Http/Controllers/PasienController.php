@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('medis.pasien',[
@@ -19,12 +14,6 @@ class PasienController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,46 +33,32 @@ class PasienController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pasien  $pasien
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pasien $pasien)
     {
-        //
+        return view('medis.rekam',[
+            'pasien' => $pasien,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pasien  $pasien
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pasien $pasien)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pasien  $pasien
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Pasien $pasien)
     {
-        //
+        $request->validate([
+            'nik' => ['required', 'numeric'],
+            'nama' => ['required'],
+            'hp' => ['required', 'numeric'],
+            'unit' => ['required'],
+            'umur' => ['required', 'numeric'],
+            'tgllahir' => ['required'],
+            'tempat' => ['required'],
+            'kelamin' => ['required'],
+            'kategori' => ['required'],
+            'email' => ['required', 'email'],
+        ]);
+        Pasien::find($pasien->id)->update($request->all());
+        notify()->success('Data Berhasil Diedit', 'Berhasil');
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pasien  $pasien
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Pasien $pasien)
     {
         Pasien::where('id', $pasien->id)->delete();

@@ -11,28 +11,28 @@
             @csrf
             <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror me-2" name="name" id="name">
+            <input type="text" class="form-control @error('name') is-invalid @enderror me-2" name="name" id="name" value="{{ old('name') }}">
                 @error('name')
                 <span class="invalid-feedback">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror me-2 " name="email" id="email">
+            <input type="email" class="form-control @error('email') is-invalid @enderror me-2 " name="email" id="email" value="{{ old('email') }}">
                 @error('email')
                 <span class="invalid-feedback">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control @error('username') is-invalid @enderror me-2" name="username" id="username">
+            <input type="text" class="form-control @error('username') is-invalid @enderror me-2" name="username" id="username" value="{{ old('username') }}">
                 @error('username')
                 <span class="invalid-feedback">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror me-2" name="password" id="password">
+            <input type="password" class="form-control @error('password') is-invalid @enderror me-2" name="password" id="password" value="{{ old('password') }}">
                 @error('password')
                 <span class="invalid-feedback">{{$message}}</span>
                 @enderror

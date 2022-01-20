@@ -83,6 +83,11 @@
         $('#hapuspasien').attr('action', '/pasien/' + id);
     }
 
+    //fungsi modal tambah validation error
+    @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
+       $('#modalTambahBarang').modal('show');
+    @endif
+
     // fungsi modal edit
     function search(){
         var nik = $('#nik').val();

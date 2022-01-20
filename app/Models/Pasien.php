@@ -21,4 +21,5 @@ class Pasien extends Model
         'kategori',
         'email',
     ];
+    protected $dates= ['tgllahir'];
 }
