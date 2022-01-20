@@ -3,7 +3,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Dosen</h1>
+          <h1 class="h3 mb-0 text-gray-800">Pasien</h1>
         </div>
 
         <div class="card mt-3">
@@ -89,7 +89,7 @@
         var len = nik.length;
         if (len >= 6){
         $.ajax({
-                url : 'apipasien/'+nik,
+                url : '/apipasien/'+nik,
                 type: 'get',
                 dataType: 'json',
                 success: function(data){

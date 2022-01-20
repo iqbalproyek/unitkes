@@ -95,6 +95,7 @@ class PasienController extends Controller
     {
         return view('medis.pasien_filter', [
             'pasien' => Pasien::where('kategori', $filter)->get(),
+            'head' => $filter,
         ]);
     }
 }
