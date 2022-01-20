@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function(){
     Route::middleware('medis')->group(function(){
         Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
         Route::resource('pasien', PasienController::class);
-        Route::get('pasien/{filter}/filter', [PasienController::class,'filter'])->name('pasien.filter');
+        Route::get('pasien/filter/{filter}', [PasienController::class,'filter'])->name('pasien.filter');
         Route::get('apipasien/{nik}', [ApiPasienController::class, 'index']);
     });
 

@@ -28,10 +28,10 @@
                   Filter Pasien
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item text-lg" href="{{ route('pasien.index') }}">All</a>
-                  <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'Dosen') }}">Dosen</a>
-                  <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'Pegawai') }}">Pegawai</a>
-                  <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'Mahasiswa') }}">Mahasiswa</a>
+                    <a class="dropdown-item text-lg" href="{{ route('pasien.index') }}">All</a>
+                    <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'Dosen') }}">Dosen</a>
+                    <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'pegawai') }}">Pegawai</a>
+                    <a class="dropdown-item text-lg" href="{{ route('pasien.filter', 'Mahasiswa') }}">Mahasiswa</a>
                 </div>
               </div>
 
