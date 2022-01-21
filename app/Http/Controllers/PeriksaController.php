@@ -28,41 +28,40 @@ class PeriksaController extends Controller
      */
     public function store(PeriksaRequest $request)
     {
-        // $fileName = time().'.'.$request->foto->extension();
-        // $request->file->move(public_path('file'), $fileName);
-
         $image = $request->file('foto');
-       //  print_r($image);
+
+        if(isset($image)) {
         $fileName = time().'.'.$image->getClientOriginalExtension();
-       //  echo $image;
-       //  exit(0);
         $destinationPath = base_path('Uploads');
         $image->move($destinationPath, $fileName);
+        }else{
+            $fileName = "-";
+        }
 
         $periksa = Periksa::create([
             'id_pasien' => $request->id_pasien,
             'tanggal' => $request->tanggal,
-            't_badan' => $request->t_badan,
-            'b_badan' => $request->b_badan,
-            'tekanan_darah' => $request->tekanan_darah,
-            'tekanan_darah2' => $request->tekanan_darah2,
-            'pulse' => $request->pulse,
-            'hemoglobin' => $request->hemoglobin,
-            'asam_urat' => $request->asam_urat,
-            'gula_darah' => $request->gula_darah,
-            'kolesterol' => $request->kolesterol,
-            'saturasi' => $request->saturasi,
+            't_badan' => $request->t_badan ?? '-',
+            'b_badan' => $request->b_badan ?? '-',
+            'tekanan_darah' => $request->tekanan_darah ?? '-',
+            'tekanan_darah2' => $request->tekanan_darah2 ?? '-',
+            'pulse' => $request->pulse ?? '-',
+            'hemoglobin' => $request->hemoglobin ?? '-',
+            'asam_urat' => $request->asam_urat ?? '-',
+            'gula_darah' => $request->gula_darah ?? '-',
+            'kolesterol' => $request->kolesterol ?? '-',
+            'saturasi' => $request->saturasi ?? '-',
         ]);
 
         $id = $periksa->id;
         Rekam::create([
             'id_rekam' => $id,
-            'keluhan' => $request->keluhan,
-            'alergi' => $request->alergi,
-            'pemeriksaan' => $request->pemeriksaan,
-            'tindakan' => $request->tindakan,
-            'terapi' => $request->terapi,
-            'tanggal' => $request->tanggal,
+            'keluhan' => $request->keluhan ?? '-',
+            'alergi' => $request->alergi ?? '-',
+            'pemeriksaan' => $request->pemeriksaan ?? '-',
+            'tindakan' => $request->tindakan ?? '-',
+            'terapi' => $request->terapi ?? '-',
+            'tanggal' => $request->tanggal ?? '-',
             'foto' => $fileName,
         ]);
         notify()->success('Data Berhasil Ditambahkan', 'Berhasil');

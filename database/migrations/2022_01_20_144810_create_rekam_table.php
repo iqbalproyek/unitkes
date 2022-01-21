@@ -16,12 +16,12 @@ class CreateRekamTable extends Migration
         Schema::create('rekam', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_rekam')->constrained('periksa')->onDelete('cascade');
-            $table->string('keluhan');
-            $table->string('alergi');
-            $table->string('pemeriksaan');
-            $table->string('tindakan');
-            $table->string('terapi');
-            $table->string('foto');
+            $table->string('keluhan')->default('-');
+            $table->string('alergi')->default('-');
+            $table->string('pemeriksaan')->default('-');
+            $table->string('tindakan')->default('-');
+            $table->string('terapi')->default('-');
+            $table->string('foto')->default('-');
             $table->timestamps();
         });
     }

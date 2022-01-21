@@ -26,23 +26,8 @@ class PeriksaRequest extends FormRequest
         return [
             'id_pasien' => ['required'],
             'tanggal' => ['required'],
-            't_badan' => ['required', 'numeric'],
-            'b_badan' => ['required', 'numeric'],
-            'tekanan_darah' => ['required', 'numeric'],
-            'tekanan_darah2' => ['required', 'numeric'],
-            'pulse' => ['required', 'numeric'],
-            'hemoglobin' => ['required', 'numeric'],
-            'asam_urat' => ['required', 'numeric'],
-            'gula_darah' => ['required', 'numeric'],
-            'kolesterol' => ['required', 'numeric'],
-            'saturasi' => ['required', 'numeric'],
 
-            'keluhan' => ['required'],
-            'alergi' => ['required'],
-            'pemeriksaan' => ['required'],
-            'tindakan' => ['required'],
-            'terapi' => ['required'],
-            'foto' => ['required','mimes:jpeg,png,bmp','max:2048'],
+            'foto' => ['mimes:jpeg,png,bmp','max:2048'],
         ];
     }
 }
