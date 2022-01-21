@@ -159,7 +159,7 @@
                                           <textarea class="form-control @error('alergi') is-invalid @enderror me-2" name="alergi" id="alergi" rows="2">{{ old('alergi') }}</textarea>
                                           @error('alergi')
                                           <span class="invalid-feedback">{{$message}}</span>
-                                      @enderror
+                                          @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -227,25 +227,19 @@
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
-
-
         <div class="modal-header">
-
           <h4 class="modal-title">Hapus Data</h4>
-
         </div>
-
-
         <div class="modal-body">
 
-        <form action="prosescek.php?aksi=hapus" method="post">
-
+        <form id="hapusperiksa" action="" method="post">
+            @csrf
+            @method('delete')
                 <center><h6 class="modal-title">Apakah Anda ingin menghapus data ini ?</h6>
                 <br>
           <div class="form-group">
             <button type="submit" id="hapus_brg" class="btn btn-primary btn-block">Hapus Data</button>
           </div>
-
           </form>
         </div>
 

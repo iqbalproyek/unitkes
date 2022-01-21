@@ -7,25 +7,10 @@ use App\Models\Periksa;
 use App\Models\Rekam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PeriksaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PeriksaRequest $request)
     {
         $image = $request->file('foto');
@@ -66,7 +51,6 @@ class PeriksaController extends Controller
         ]);
         notify()->success('Data Berhasil Ditambahkan', 'Berhasil');
         return back();
-
     }
 
     /**
@@ -105,12 +89,19 @@ class PeriksaController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+
      * @param  \App\Models\Periksa  $periksa
      * @return \Illuminate\Http\Response
      */
     public function destroy(Periksa $periksa)
     {
-        //
+        $filename = Rekam::where('id_rekam', $periksa->id)->pluck('foto')->first();
+        $destinationPath = base_path('Uploads');
+        if(file_exists($destinationPath.'/'.$filename)){
+            unlink($destinationPath.'/'.$filename);
+        }
+        Periksa::where('id', $periksa->id)->delete();
+        notify()->success('Data Berhasil Dihapus', 'Berhasil');
+        return back();
     }
 }

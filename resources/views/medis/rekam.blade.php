@@ -269,16 +269,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- foreach data cek --}}
+                                    @foreach($periksa as $index => $data)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $data->tanggal }}</td>
                                         <td>
                                             <a href="tb_rekam.php?view=" class="btn btn-sm btn-info">Detail</a>
-                                            <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusBarang">Hapus</a>
+                                            <a href="" class="btn btn-sm btn-danger" onclick="modalhapus({{ $data->id }})" data-toggle="modal" data-target="#hapusBarang">Hapus</a>
                                         </td>
                                     </tr>
-                                {{-- endforeach data cek --}}
+                                    @endforeach
                                 </tbody>
                                 </table>
 
@@ -314,5 +314,16 @@ function modaltambah(id, nik){
     console.log(id);
     $('#id_pasien').append(`<option value="${id}">${nik}</option>`);
 }
+
+// modal hapus
+function modalhapus(id){
+    console.log(id);
+        $('#hapusperiksa').attr('action', '/periksa/' + id);
+}
+
+//fungsi modal tambah validation error
+// @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
+//        $('#modalTambahBarang').modal('show');
+// @endif
 
 </script>

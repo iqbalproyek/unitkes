@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PasienRequest;
 use App\Models\Pasien;
+use App\Models\Periksa;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -24,8 +25,10 @@ class PasienController extends Controller
 
     public function show(Pasien $pasien)
     {
+        $id = Pasien::find($pasien)->pluck('id');
         return view('medis.rekam',[
             'pasien' => $pasien,
+            'periksa' => Periksa::where('id_pasien', $id)->get(),
         ]);
     }
 
