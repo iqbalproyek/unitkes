@@ -322,8 +322,8 @@ function modalhapus(id){
 }
 
 //fungsi modal tambah validation error
-// @if ($errors->has('nik')|| $errors->has('nama') || $errors->has('hp') || $errors->has('unit') || $errors->has('umur') || $errors->has('tgllahir') || $errors->has('tempat') || $errors->has('kelamin') || $errors->has('kategori') || $errors->has('email'))
-//        $('#modalTambahBarang').modal('show');
-// @endif
+@if ($errors->has('id_pasien')|| $errors->has('tanggal'))
+       $('#modalTambahBarang').modal('show');
+@endif
 
 </script>
