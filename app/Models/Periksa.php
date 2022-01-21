@@ -10,6 +10,7 @@ class Periksa extends Model
     use HasFactory;
     protected $table = 'periksa';
     // protected $with = ['pasien'];
+    protected $dates= ['tanggal'];
     protected $fillable = [
         'id_pasien',
         'tanggal',

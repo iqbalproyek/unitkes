@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PeriksaRequest;
+use App\Models\Pasien;
 use App\Models\Periksa;
 use App\Models\Rekam;
 use Illuminate\Http\Request;
@@ -64,6 +65,7 @@ class PeriksaController extends Controller
         return view('medis.rekam_detail', [
             'periksa' => $periksa,
             'rekam' => Rekam::where('id_rekam', $periksa->id)->firstOrFail(),
+            'pasien' => Pasien::where('id', $periksa->id_pasien)->pluck('kelamin')->first(),
         ]);
     }
 
