@@ -61,7 +61,10 @@ class PeriksaController extends Controller
      */
     public function show(Periksa $periksa)
     {
-        //
+        return view('medis.rekam_detail', [
+            'periksa' => $periksa,
+            'rekam' => Rekam::where('id_rekam', $periksa->id)->firstOrFail(),
+        ]);
     }
 
     /**
