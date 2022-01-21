@@ -37,7 +37,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item {{ (request()->is('pasien')) || (request()->is('pasien/filter/Dosen')) || (request()->is('pasien/filter/Mahasiswa')) || (request()->is('pasien/filter/pegawai')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('pasien')) || (request()->is('pasien/filter/Dosen')) || (request()->is('pasien/filter/Mahasiswa')) || (request()->is('pasien/filter/pegawai')) || (request()->is('pasien/*')) || (request()->is('periksa/*')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('pasien.index') }}">
                   <i class="fas fa-id-card-alt"></i>
                   <span>Data Pasien</span></a>

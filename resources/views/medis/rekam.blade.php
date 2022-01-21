@@ -272,7 +272,7 @@
                                     @foreach($periksa as $index => $data)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $data->tanggal }}</td>
+                                        <td>{{ $data->tanggal->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="/periksa/{{ $data->id }}" class="btn btn-sm btn-info">Detail</a>
                                             <a href="" class="btn btn-sm btn-danger" onclick="modalhapus({{ $data->id }})" data-toggle="modal" data-target="#hapusBarang">Hapus</a>

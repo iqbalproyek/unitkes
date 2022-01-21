@@ -10,6 +10,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +53,8 @@ Route::middleware('auth')->group(function(){
         Route::get('pasien/filter/{filter}', [PasienController::class,'filter'])->name('pasien.filter');
         Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
         Route::resource('periksa', PeriksaController::class);
+        Route::put('periksa/{periksa}/rekam', [PeriksaController::class, 'updaterekam'])->name('rekam.update');
     });
-
 });
 
 

@@ -18,7 +18,7 @@ class PeriksaController extends Controller
 
         if(isset($image)) {
         $fileName = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = base_path('Uploads');
+        $destinationPath = base_path('/public/Uploads');
         $image->move($destinationPath, $fileName);
         }else{
             $fileName = "-";
@@ -47,7 +47,6 @@ class PeriksaController extends Controller
             'pemeriksaan' => $request->pemeriksaan ?? '-',
             'tindakan' => $request->tindakan ?? '-',
             'terapi' => $request->terapi ?? '-',
-            'tanggal' => $request->tanggal ?? '-',
             'foto' => $fileName,
         ]);
         notify()->success('Data Berhasil Ditambahkan', 'Berhasil');
@@ -69,44 +68,67 @@ class PeriksaController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Periksa  $periksa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Periksa $periksa)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Periksa  $periksa
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Periksa $periksa)
     {
-        //
+        $request->validate([
+            'tanggal' => ['required'],
+        ]);
+        Periksa::find($periksa->id)->update([
+            'tanggal' => $request->tanggal,
+            't_badan' => $request->t_badan ?? '-',
+            'b_badan' => $request->b_badan ?? '-',
+            'tekanan_darah' => $request->tekanan_darah ?? '-',
+            'tekanan_darah2' => $request->tekanan_darah2 ?? '-',
+            'pulse' => $request->pulse ?? '-',
+            'hemoglobin' => $request->hemoglobin ?? '-',
+            'asam_urat' => $request->asam_urat ?? '-',
+            'gula_darah' => $request->gula_darah ?? '-',
+            'kolesterol' => $request->kolesterol ?? '-',
+            'saturasi' => $request->saturasi ?? '-',
+        ]);
+        notify()->success('Data Berhasil Diedit', 'Berhasil');
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-
-     * @param  \App\Models\Periksa  $periksa
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Periksa $periksa)
     {
         $filename = Rekam::where('id_rekam', $periksa->id)->pluck('foto')->first();
-        $destinationPath = base_path('Uploads');
+        $destinationPath = base_path('/public/Uploads');
         if(file_exists($destinationPath.'/'.$filename)){
             unlink($destinationPath.'/'.$filename);
         }
         Periksa::where('id', $periksa->id)->delete();
         notify()->success('Data Berhasil Dihapus', 'Berhasil');
+        return back();
+    }
+
+    public function updaterekam(Request $request, Periksa $periksa)
+    {
+        $request->validate([
+            'foto' => ['mimes:jpeg,png,bmp','max:2048'],
+        ]);
+        $image = $request->file('foto');
+        $filelama = Rekam::where('id_rekam', $periksa->id)->pluck('foto')->first();
+
+            if(isset($image)) {
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = base_path('/public/Uploads');
+            $image->move($destinationPath, $fileName);
+            if(file_exists($destinationPath.'/'.$filelama)){
+                unlink($destinationPath.'/'.$filelama);
+            }
+            }else{
+                $fileName = $filelama;
+            }
+            Rekam::where('id_rekam', $periksa->id)->update([
+                'keluhan' => $request->keluhan ?? '-',
+                'alergi' => $request->alergi ?? '-',
+                'pemeriksaan' => $request->pemeriksaan ?? '-',
+                'tindakan' => $request->tindakan ?? '-',
+                'terapi' => $request->terapi ?? '-',
+                'foto' => $fileName,
+            ]);
+        notify()->success('Data Berhasil Diedit', 'Berhasil');
         return back();
     }
 }
