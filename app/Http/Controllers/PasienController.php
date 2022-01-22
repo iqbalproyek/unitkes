@@ -28,7 +28,7 @@ class PasienController extends Controller
         $id = Pasien::find($pasien)->pluck('id');
         return view('medis.rekam',[
             'pasien' => $pasien,
-            'periksa' => Periksa::where('id_pasien', $id)->get(),
+            'periksa' => Periksa::where('id_pasien', $id)->orderby('id', 'desc')->get(),
         ]);
     }
 
@@ -49,7 +49,7 @@ class PasienController extends Controller
     public function filter($filter)
     {
         return view('medis.pasien_filter', [
-            'pasien' => Pasien::where('kategori', $filter)->get(),
+            'pasien' => Pasien::where('kategori', $filter)->orderby('id', 'desc')->get(),
             'head' => $filter,
         ]);
     }

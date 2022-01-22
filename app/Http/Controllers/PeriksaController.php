@@ -131,4 +131,12 @@ class PeriksaController extends Controller
         notify()->success('Data Berhasil Diedit', 'Berhasil');
         return back();
     }
+
+    function bukti(Periksa $periksa)
+    {
+        return view('medis.buktiperiksa',[
+            'periksa' => $periksa,
+            'pasien' => Pasien::where('id', $periksa->id_pasien)->first(),
+        ]);
+    }
 }

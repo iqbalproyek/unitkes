@@ -19,7 +19,7 @@
                   <div class="col mr-2">
                   <a href="tb_laporandsn.php">
                     <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Dosen</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dsn }}</div>
                     </a>
                   </div>
                   <div class="col-auto">
@@ -38,7 +38,7 @@
                   <div class="col mr-2">
                   <a href="tb_laporanmhs.php">
                     <div class="text-s font-weight-bold text-success text-uppercase mb-1">Mahasiswa</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mhs }}</div>
                     </a>
                   </div>
                   <div class="col-auto">
@@ -57,7 +57,7 @@
                   <div class="col mr-2">
                   <a href="tb_laporankry.php">
                     <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Karyawan</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pgw }}</div>
                     </a>
                   </div>
                   <div class="col-auto">

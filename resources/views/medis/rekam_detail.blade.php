@@ -131,7 +131,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                        <a href="buktiperiksa.php?id=" target="_blank" class="btn btn-secondary">Print</a>
+                        <a href="/periksa/{{ $periksa->id }}/bukti" target="_blank" class="btn btn-secondary">Print</a>
                         </div>
 
                         </div>
@@ -664,6 +664,7 @@
                 <!-- /.container-fluid -->
             </div>
 
+            <br>
     <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>

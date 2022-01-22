@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function(){
         Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
         Route::resource('periksa', PeriksaController::class);
         Route::put('periksa/{periksa}/rekam', [PeriksaController::class, 'updaterekam'])->name('rekam.update');
+        Route::get('periksa/{periksa}/bukti', [PeriksaController::class, 'bukti'])->name('periksa.bukti');
     });
 });
 
