@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class ApiPasienController extends Controller
 {
+    // get data dari api polbat
     public function index($nik)
     {
         $ch = curl_init('https://sid.polibatam.ac.id/apilogin/web/api/auth/cek-id?id='.$nik.'');

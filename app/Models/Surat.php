@@ -20,4 +20,9 @@ class Surat extends Model
     {
         return $this->hasOne(Sakit::class);
     }
+
+    public function sehat()
+    {
+        return $this->hasOne(Sehat::class);
+    }
 }

@@ -7,12 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CekController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // cek role login
     public function __invoke(Request $request)
     {
         $role = Auth::user()->role;

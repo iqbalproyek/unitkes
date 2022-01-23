@@ -50,10 +50,10 @@
                 <i class="fa fa-envelope"></i>
                 <span>Data Surat Keluar</span>
               </a>
-              <div id="collapsePages2" class="collapse {{ (request()->is('surat/izin')) || (request()->is('surat/izin/*')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div id="collapsePages2" class="collapse {{ (request()->is('surat/izin')) || (request()->is('surat/izin/*')) || (request()->is('surat/kesehatan')) || (request()->is('surat/kesehatan/*')) ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <a class="collapse-item {{ (request()->is('surat/izin')) || (request()->is('surat/izin/*')) ? 'active' : '' }}" href="/surat/izin">Surat Izin Sakit</a>
-                  <a class="collapse-item" href="tb_suratsehat.php">Surat Keterangan sehat</a>
+                  <a class="collapse-item {{ (request()->is('surat/kesehatan')) || (request()->is('surat/kesehatan/*')) ? 'active' : '' }}" href="/surat/kesehatan">Surat Keterangan sehat</a>
                 </div>
               </div>
             </li>

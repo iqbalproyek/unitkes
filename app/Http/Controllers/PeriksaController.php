@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PeriksaController extends Controller
 {
+    // tambah pemeriksaan
     public function store(PeriksaRequest $request)
     {
         $image = $request->file('foto');
@@ -53,12 +54,7 @@ class PeriksaController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Periksa  $periksa
-     * @return \Illuminate\Http\Response
-     */
+    // data pemeriksaan per id
     public function show(Periksa $periksa)
     {
         return view('medis.rekam_detail', [
@@ -68,6 +64,7 @@ class PeriksaController extends Controller
         ]);
     }
 
+    // update pemeriksaan
     public function update(Request $request, Periksa $periksa)
     {
         $request->validate([
@@ -90,6 +87,7 @@ class PeriksaController extends Controller
         return back();
     }
 
+    // hapus pemeriksaan
     public function destroy(Periksa $periksa)
     {
         $filename = Rekam::where('id_rekam', $periksa->id)->pluck('foto')->first();
@@ -102,6 +100,7 @@ class PeriksaController extends Controller
         return back();
     }
 
+    // update rekam pemeriksaan
     public function updaterekam(Request $request, Periksa $periksa)
     {
         $request->validate([
@@ -132,6 +131,7 @@ class PeriksaController extends Controller
         return back();
     }
 
+    // bukti print pemeriksaan
     function bukti(Periksa $periksa)
     {
         return view('medis.buktiperiksa',[

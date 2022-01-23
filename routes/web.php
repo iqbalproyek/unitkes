@@ -50,18 +50,28 @@ Route::middleware('auth')->group(function(){
     //Medis
     Route::middleware('medis')->group(function(){
         Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
+
+        // pasien
         Route::resource('pasien', PasienController::class);
         Route::get('pasien/filter/{filter}', [PasienController::class,'filter'])->name('pasien.filter');
 
         Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
 
+        // pemeriksaan
         Route::resource('periksa', PeriksaController::class);
         Route::put('periksa/{periksa}/rekam', [PeriksaController::class, 'updaterekam'])->name('rekam.update');
         Route::get('periksa/{periksa}/bukti', [PeriksaController::class, 'bukti'])->name('periksa.bukti');
 
+        // surat
         Route::resource('surat/izin', SuratController::class);
         Route::put('surat/izin/sakit/{id}', [SuratController::class, 'updatesakit'])->name('izinsakit.update');
         Route::get('surat/izin/{izin}/bukti', [SuratController::class, 'suratsakit'])->name('bukti.sakit');
+
+        Route::get('surat/kesehatan', [SuratController::class, 'indexsehat'])->name('sehat.index');
+        Route::post('surat/kesehatan', [SuratController::class, 'storesehat'])->name('sehat.store');
+        Route::get('surat/kesehatan/{id}', [SuratController::class, 'showsehat'])->name('sehat.show');
+        Route::put('surat/kesehatan/keterangan/{id}', [SuratController::class, 'updatesehat'])->name('sehat.update');
+        Route::put('surat/kesehatan/detail/{id}', [SuratController::class, 'updatesehatd'])->name('sehatd.update');
     });
 });
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
+    // view pengumuman
     public function index()
     {
         return view('admin.pengumuman', [
@@ -14,6 +15,7 @@ class PengumumanController extends Controller
         ]);
     }
 
+    // tambah pengumuman
     public function store(Request $request)
     {
         $request->validate([
@@ -26,6 +28,7 @@ class PengumumanController extends Controller
         return back();
     }
 
+    // get data edit pengumuman
     public function edit(Pengumuman $pengumuman)
     {
         return response()->json([
@@ -33,6 +36,7 @@ class PengumumanController extends Controller
         ]);
     }
 
+    // update pengumuman
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $request->validate([
@@ -49,6 +53,7 @@ class PengumumanController extends Controller
         return back();
     }
 
+    // hapus pengumuman
     public function destroy(Pengumuman $pengumuman)
     {
         Pengumuman::find($pengumuman->id)->delete();

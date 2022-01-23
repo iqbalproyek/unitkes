@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
+    // view pasien
     public function index()
     {
         return view('medis.pasien',[
@@ -16,6 +17,7 @@ class PasienController extends Controller
         ]);
     }
 
+    // tambah pasien
     public function store(PasienRequest $request)
     {
         Pasien::create($request->all());
@@ -23,6 +25,7 @@ class PasienController extends Controller
         return back();
     }
 
+    // detail data pasien per id
     public function show(Pasien $pasien)
     {
         $id = Pasien::find($pasien)->pluck('id');
@@ -32,6 +35,7 @@ class PasienController extends Controller
         ]);
     }
 
+    // update data pasien
     public function update(PasienRequest $request, Pasien $pasien)
     {
         Pasien::find($pasien->id)->update($request->all());
@@ -39,6 +43,7 @@ class PasienController extends Controller
         return back();
     }
 
+    // hapus pasien
     public function destroy(Pasien $pasien)
     {
         Pasien::where('id', $pasien->id)->delete();
@@ -46,6 +51,7 @@ class PasienController extends Controller
         return back();
     }
 
+    // filter data pasien per kategori
     public function filter($filter)
     {
         return view('medis.pasien_filter', [

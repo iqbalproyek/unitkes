@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
+    // view petugas
     public function index()
     {
         return view('admin.petugas', [
@@ -16,6 +17,7 @@ class UserController extends Controller
         ]);
     }
 
+    // tambah petugas
     public function store(Request $request)
     {
         $request->validate([
@@ -31,6 +33,7 @@ class UserController extends Controller
 
     }
 
+    // get data edit petugas
     public function edit(User $petuga)
     {
         return response()->json([
@@ -38,6 +41,7 @@ class UserController extends Controller
         ]);
     }
 
+    // update petugas
     public function update(Request $request, $petuga)
     {
         $request->validate([
@@ -66,6 +70,7 @@ class UserController extends Controller
         return back();
     }
 
+    // delete petugas
     public function destroy($petuga)
     {
         User::find($petuga)->delete();
