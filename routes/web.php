@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiPasienController;
 use App\Http\Controllers\CekController;
+use App\Http\Controllers\DashFarmasiController;
 use App\Http\Controllers\DashMedisController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -72,6 +73,10 @@ Route::middleware('auth')->group(function(){
         Route::get('surat/kesehatan/{id}', [SuratController::class, 'showsehat'])->name('sehat.show');
         Route::put('surat/kesehatan/keterangan/{id}', [SuratController::class, 'updatesehat'])->name('sehat.update');
         Route::put('surat/kesehatan/detail/{id}', [SuratController::class, 'updatesehatd'])->name('sehatd.update');
+    });
+
+    Route::middleware('farmasi')->group(function(){
+        Route::get('farmasi', [DashFarmasiController::class, 'index'])->name('dashboard.farmasi');
     });
 });
 

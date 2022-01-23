@@ -20,7 +20,7 @@ class CekController extends Controller
             return redirect()->route('dashboard.medis');
         }else if($role == "farmasi"){
             notify()->success("Selamat Datang $name", "Login Berhasil");
-            return redirect()->route('farmasi');
+            return redirect()->route('dashboard.farmasi');
         }else{
             return back();
         }
