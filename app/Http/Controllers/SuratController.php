@@ -47,7 +47,7 @@ class SuratController extends Controller
     public function show($id)
     {
         return view('medis.detail_sakit', [
-            'surat' => Surat::find($id)->first(),
+            'surat' => Surat::where('id', $id)->first(),
             'sakit' => Sakit::where('id_surat', $id)->first(),
         ]);
     }
@@ -56,7 +56,7 @@ class SuratController extends Controller
     {
         $request->validate([
             'tanggal' => ['required'],
-            'no_surat' => ['required'],
+            'no_surat' => ['required',],
         ]);
         Surat::where('id', $id)->update([
             'tanggal' => $request->tanggal,

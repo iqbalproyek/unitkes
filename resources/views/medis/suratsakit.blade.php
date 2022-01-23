@@ -159,7 +159,6 @@
                       <a href="" class="btn btn-sm btn-danger" data-toggle="modal" onclick="modalhapus({{ $row->id }})" data-target="#hapusBarang">Hapus</a>
                   </td>
               </tr>
-              <?php var_dump($row->id) ?>
 
               @endforeach
 
