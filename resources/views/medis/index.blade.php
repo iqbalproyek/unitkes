@@ -80,7 +80,7 @@
                         <div class="col mr-2">
                         <a href="tb_laporansuratsehat.php">
                           <div class="text-s font-weight-bold text-info text-uppercase mb-1">Surat Keterangan Kesehatan</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $sehat }}</div>
                           </a>
                         </div>
                         <div class="col-auto">
@@ -99,7 +99,7 @@
                         <div class="col mr-2">
                         <a href="tb_laporansuratsakit.php">
                           <div class="text-s font-weight-bold text-danger text-uppercase mb-1">Surat Keterangan Sakit</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $izin }}</div>
                           </a>
                         </div>
                         <div class="col-auto">

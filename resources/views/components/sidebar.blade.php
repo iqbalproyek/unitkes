@@ -45,14 +45,14 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  <li class="nav-item {{ (request()->is('surat/izin')) || (request()->is('surat/izin/*')) ? 'active' : '' }}">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fa fa-envelope"></i>
                 <span>Data Surat Keluar</span>
               </a>
               <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href="tb_suratsakit.php">Surat Izin Sakit</a>
+                  <a class="collapse-item {{ (request()->is('surat/izin')) || (request()->is('surat/izin/*')) ? 'active' : '' }}" href="/surat/izin">Surat Izin Sakit</a>
                   <a class="collapse-item" href="tb_suratsehat.php">Surat Keterangan sehat</a>
                 </div>
               </div>

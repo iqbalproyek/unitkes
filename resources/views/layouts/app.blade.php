@@ -24,8 +24,9 @@
     <!-- Custom styles for this page -->
     <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/template/vendor/Buttons/css/buttons.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/template/vendor/fixedheader/css/fixedHeader.bootstrap4.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/template/vendor/responsive/css/responsive.bootstrap4.min.css"/>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.1/css/fixedHeader.dataTables.min.css">
 
     <style type="text/css"> .notify{ z-index: 1000000; } </style>
     @notifyCss
@@ -121,6 +122,9 @@
     <script src="/template/vendor/Buttons/js/buttons.colVis.min.js"></script>
 
     <script src="/template/vendor/ckeditor/ckeditor.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.2.1/js/dataTables.fixedHeader.min.js"></script>
 
     @notifyJs
 </body>
