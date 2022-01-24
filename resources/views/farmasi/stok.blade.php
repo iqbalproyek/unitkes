@@ -60,31 +60,10 @@
 
               <tbody>
             @foreach($stok as $index => $row)
-                <?php
-                $id = $row->id;
-                $len = strlen($id);
-                if ($len == 1){
-                    $kode = 'S-00000'.$id;
-                }
-                if ($len == 2){
-                    $kode = 'S-0000'.$id;
-                }
-                if ($len == 3){
-                    $kode = 'S-000'.$id;
-                }
-                if ($len == 4){
-                    $kode = 'S-00'.$id;
-                }
-                if ($len == 5){
-                    $kode = 'S-0'.$id;
-                }
-                if ($len == 6){
-                    $kode = 'S-'.$id;
-                }
-                ?>
+
               <tr>
                   <td>{{ $index + 1 }}</td>
-                  <td>{{ $kode }}</td>
+                  <td>{{ sprintf('%05s',$row->id) }}</td>
                   <td>{{ $row->nama_obat }}</td>
                   <td>{{ $row->sediaan }}</td>
                   <td>{{ $row->satuan }}</td>

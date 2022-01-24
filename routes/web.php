@@ -6,6 +6,7 @@ use App\Http\Controllers\DashFarmasiController;
 use App\Http\Controllers\DashMedisController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PeriksaController;
@@ -79,6 +80,8 @@ Route::middleware('auth')->group(function(){
     Route::middleware('farmasi')->group(function(){
         Route::get('farmasi', [DashFarmasiController::class, 'index'])->name('dashboard.farmasi');
         Route::resource('obat/stok', StokController::class);
+        Route::resource('obat/masuk', MasukController::class);
+        Route::put('obat/masuk/{id}/stok', [MasukController::class, 'tambahstok'])->name('tambahstok');
     });
 });
 

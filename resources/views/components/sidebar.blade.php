@@ -82,7 +82,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="obat_masuk.php">
+                <a class="nav-link" href="/obat/masuk">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Obat Masuk</span></a>
             </li>
