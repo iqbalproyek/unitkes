@@ -41,6 +41,7 @@ class MasukController extends Controller
         return back();
     }
 
+    // get data edit
     public function edit($id)
     {
         $masuk = DB::table('obatstok')
@@ -52,16 +53,35 @@ class MasukController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Masuk  $masuk
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Masuk $masuk)
+    // update dan update stok
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tgl_masuk2' => ['required'],
+            'jmlh_masuk2' => ['required'],
+        ]);
+        $id_stok = Masuk::where('id', $id)->pluck('id_obat')->first();
+        $jumlah_sekarang = Stok::where('id', $id_stok)->pluck('jumlah')->first();
+        $jumlah_masuk_sekarang = Masuk::where('id', $id)->pluck('jmlh_masuk')->first();
+
+        if($request->jmlh_masuk >= $jumlah_masuk_sekarang){
+            $selisih = $request->jmlh_masuk2 - $jumlah_masuk_sekarang;
+            $stok = $jumlah_sekarang + $selisih;
+        }else{
+            $selisih =  $jumlah_masuk_sekarang - $request->jmlh_masuk2;
+            $stok = $jumlah_sekarang - $selisih;
+        }
+
+        Masuk::where('id', $id)->update([
+            'tgl_masuk' => $request->tgl_masuk2,
+            'jmlh_masuk' => $request->jmlh_masuk2,
+        ]);
+        Stok::where('id', $id_stok)->update([
+            'jumlah' => $stok,
+        ]);
+
+        notify()->success('Data berhasil Diedit', 'berhasil');
+        return back();
     }
 
     // hapus masuk dan update stok

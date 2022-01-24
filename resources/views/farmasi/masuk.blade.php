@@ -21,7 +21,7 @@
                     <input type="hidden" name="id_obat" id="id_obat">
                   <div class="form-group">
                       <label for="tgl_masuk" class="m-0 font-weight-bold text-dark">Tanggal</label>
-                      <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror me-2" name="tgl_masuk" id="tgl_masuk">
+                      <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror me-2" name="tgl_masuk" id="tgl_masuk" value="{{ old('tgl_masuk') }}">
                       @error('tgl_masuk')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -63,7 +63,7 @@
 
                   <div class="form-group">
                       <label for="jmlh_masuk" class="m-0 font-weight-bold text-dark">Jumlah Masuk</label>
-                      <input type="number" min="1" class="form-control @error('jmlh_masuk') is-invalid @enderror me-2" name="jmlh_masuk" id="jmlh_masuk">
+                      <input type="number" min="1" class="form-control @error('jmlh_masuk') is-invalid @enderror me-2" name="jmlh_masuk" id="jmlh_masuk" value="{{ old('jmlh_masuk') }}">
                       @error('jmlh_masuk')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -109,15 +109,15 @@
               @foreach($stok as $index => $row)
               <tr>
                   <td>{{ $index + 1 }}</td>
-                  <td>{{ sprintf('%05s',$row->id_obat) }}</td>
+                  <td>S-{{ sprintf('%05s',$row->id) }}</td>
                   <td>{{ $row->nama_obat }}</td>
                   <td>{{ $row->sediaan }}</td>
                   <td>{{ $row->satuan }}</td>
                   <td>{{ $row->jumlah }}</td>
-                  <td>{{ $row->expired }}</td>
+                  <td>{{ Carbon\Carbon::parse($row->expired)->format('d-m-Y') }}</td>
                   <td>
                   <button class="btn btn-sm btn-info" id="select" data-id_obat="{{ $row->id }}"
-                                                                  data-kode_obat="{{ sprintf('%05s',$row->id_obat) }}"
+                                                                  data-kode_obat="S-{{ sprintf('%05s',$row->id) }}"
                                                                   data-nama_obat="{{ $row->nama_obat }}"
                                                                   data-sediaan="{{ $row->sediaan }}"
                                                                   data-satuan="{{ $row->satuan }}"
@@ -165,37 +165,15 @@
 
               <tbody>
               @foreach($masuk as $index => $row)
-              <?php
-                $id = $row->id_obat;
-                $len = strlen($id);
-                if ($len == 1){
-                    $kode = 'S-00000'.$id;
-                }
-                if ($len == 2){
-                    $kode = 'S-0000'.$id;
-                }
-                if ($len == 3){
-                    $kode = 'S-000'.$id;
-                }
-                if ($len == 4){
-                    $kode = 'S-00'.$id;
-                }
-                if ($len == 5){
-                    $kode = 'S-0'.$id;
-                }
-                if ($len == 6){
-                    $kode = 'S-'.$id;
-                }
-                ?>
               <tr>
                   <td>{{ $index + 1 }}</td>
-                  <td>{{ $row->tgl_masuk }}</td>
-                  <td>{{ $kode }}</td>
+                  <td>{{ Carbon\Carbon::parse($row->tgl_masuk)->format('d-m-Y') }}</td>
+                  <td>S-{{ sprintf('%05s',$row->id_obat) }}</td>
                   <td>{{ $row->nama_obat }}</td>
                   <td>{{ $row->jmlh_masuk }}</td>
                   <td>{{ $row->sediaan }}</td>
                   <td>{{ $row->satuan }}</td>
-                  <td>{{ $row->expired }}</td>
+                  <td>{{ Carbon\Carbon::parse($row->expired)->format('d-m-Y') }}</td>
                   <td>
                   <a href="" class="btn btn-sm btn-warning" data-toggle="modal" onclick="modaledit({{ $row->id }})" data-target="#editBarang">Edit</a>
                   <a href="" class="btn btn-sm btn-danger" data-toggle="modal" onclick="modalhapus({{ $row->id }})" data-target="#hapusBarang">Hapus</a>
@@ -255,6 +233,11 @@
           $('#tabelBarang').modal('hide');
       });
   });
+
+  //fungsi modal edit validation error
+  @if ($errors->has('tgl_masuk2')|| $errors->has('jmlh_masuk2'))
+       $('#editBarang').modal('show');
+    @endif
 
     // modal hapus
     function modalhapus(id){

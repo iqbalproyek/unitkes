@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiPasienController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashFarmasiController;
 use App\Http\Controllers\DashMedisController;
+use App\Http\Controllers\KeluarController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MasukController;
@@ -43,7 +44,7 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('cek', CekController::class)->name('cek.role');
     Route::post('logout', [LogoutController::class, 'store'])->name('logout');
-
+    Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
     //Admin
     Route::middleware('admin')->group(function(){
         Route::resource('pengumuman', PengumumanController::class);
@@ -57,8 +58,6 @@ Route::middleware('auth')->group(function(){
         // pasien
         Route::resource('pasien', PasienController::class);
         Route::get('pasien/filter/{filter}', [PasienController::class,'filter'])->name('pasien.filter');
-
-        Route::get('apipasien/{nik}', [ApiPasienController::class, 'index'])->name('pasien.api');
 
         // pemeriksaan
         Route::resource('periksa', PeriksaController::class);
@@ -82,6 +81,8 @@ Route::middleware('auth')->group(function(){
         Route::resource('obat/stok', StokController::class);
         Route::resource('obat/masuk', MasukController::class);
         Route::put('obat/masuk/{id}/stok', [MasukController::class, 'tambahstok'])->name('tambahstok');
+        Route::resource('obat/keluar', KeluarController::class);
+        Route::put('obat/keluar/{id}/stok', [KeluarController::class, 'tambahstok2'])->name('tambahstok2');
     });
 });
 

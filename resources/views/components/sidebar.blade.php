@@ -81,7 +81,7 @@
             <hr class="sidebar-divider my-0">
 
 
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('obat/masuk')) ? 'active' : '' }}">
                 <a class="nav-link" href="/obat/masuk">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>Obat Masuk</span></a>
@@ -90,8 +90,8 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
 
-                <li class="nav-item">
-                <a class="nav-link" href="obat_keluar.php">
+                <li class="nav-item {{ (request()->is('obat/keluar')) ? 'active' : '' }}">
+                <a class="nav-link" href="/obat/keluar">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Obat Keluar</span></a>
             </li>

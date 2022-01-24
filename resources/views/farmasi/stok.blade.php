@@ -63,7 +63,7 @@
 
               <tr>
                   <td>{{ $index + 1 }}</td>
-                  <td>{{ sprintf('%05s',$row->id) }}</td>
+                  <td>S-{{ sprintf('%05s',$row->id) }}</td>
                   <td>{{ $row->nama_obat }}</td>
                   <td>{{ $row->sediaan }}</td>
                   <td>{{ $row->satuan }}</td>

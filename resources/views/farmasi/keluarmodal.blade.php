@@ -11,9 +11,10 @@
         <form action="" id="modalhapus" method="post">
             @csrf
             @method('delete')
+
                 <center><h6 class="modal-title">Apakah Anda ingin menghapus data ini ?</h6>
                 <br>
-                *Stock obat akan berkurang
+                *Stock obat akan bertambah
 
           <div class="form-group">
             <button type="submit" id="hapus_brg" class="btn btn-primary btn-block">Hapus Data</button>
@@ -25,28 +26,36 @@
       </div>
     </div>
   </div>
-  {{-- end delete --}}
+{{-- end modal hapus --}}
 
-  {{-- modal edit --}}
+{{-- modal edit --}}
+<div id="editBarang" class="modal fade" role="dialog">
 
-  <div id="editBarang" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Ubah Data</h4>
         </div>
+
         <div class="modal-body">
 
-        <form action="" id="editmasuk" method="post">
+        <form action="" id="modaledit" method="post">
             @csrf
             @method('put')
         <div class="form-group">
-            <label for="tgl_masuk2" class="m-0 font-weight-bold text-dark">Tanggal</label>
-            <input type="date" class="form-control @error('tgl_masuk2') is-invalid @enderror me-2" name="tgl_masuk2" id="tgl_masuk2" value="{{ old('tgl_masuk2') }}">
-            @error('tgl_masuk2')
-                <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
+            <label for="tgl_keluar2" class="m-0 font-weight-bold text-dark">Tanggal</label>
+            <input type="date" class="form-control" name="tgl_keluar2" id="tgl_keluar2" value="{{ old('tgl_keluar') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="nik" class="m-0 font-weight-bold text-dark">NIM/NIK</label>
+            <input type="text" class="form-control" name="nik2" id="nik2" required="" readonly value="">
+        </div>
+
+        <div class="form-group">
+            <label for="nama" class="m-0 font-weight-bold text-dark">Nama Pasien</label>
+            <input type="text" class="form-control" name="nama" id="nama" required="" value="" readonly>
         </div>
 
         <div class="form-group">
@@ -81,11 +90,13 @@
         </div>
 
         <div class="form-group">
-            <label for="jmlh_masuk2" class="m-0 font-weight-bold text-dark">Jumlah Masuk</label>
-            <input type="number" min="1" class="form-control @error('jmlh_masuk2') is-invalid @enderror me-2" name="jmlh_masuk2" id="jmlh_masuk2" value="{{ old('jmlh_masuk2') }}">
-            @error('jmlh_masuk2')
-                <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
+            <label for="jumlah2" class="m-0 font-weight-bold text-dark">Jumlah Saat Ini</label>
+            <input type="number" min="1" class="form-control" name="jumlah2" id="jumlah2" required="" disabled value="">
+        </div>
+
+        <div class="form-group">
+            <label for="jmlh_keluar2" class="m-0 font-weight-bold text-dark">Jumlah Keluar</label>
+            <input type="number" min="1" class="form-control" name="jmlh_keluar2" id="jmlh_keluar2" value="{{ old('jmlh_keluar') }}">
         </div>
 
         <div class="modal-footer">
@@ -100,6 +111,5 @@
         </div>
     </div>
     </div>
-
-
             <!--endform!-->
+
