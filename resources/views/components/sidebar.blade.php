@@ -61,7 +61,7 @@
         @elseif(Auth::user()->role == "farmasi")
         <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ (request()->is('farmasi')) ? 'active' : '' }}">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/farmasi">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span></a>
             </li>
@@ -71,8 +71,8 @@
 
             <!-- Heading -->
 
-            <li class="nav-item">
-                <a class="nav-link" href="stok_obat.php">
+            <li class="nav-item {{ (request()->is('obat/stok')) ? 'active' : '' }}">
+                <a class="nav-link" href="/obat/stok">
                 <i class="fas fa-medkit"></i>
                 <span>Stok Obat</span></a>
             </li>
