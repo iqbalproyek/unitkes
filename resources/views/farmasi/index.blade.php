@@ -21,7 +21,7 @@
                   <div class="col mr-2">
                   <a href="laporan_masuk.php">
                     <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Obat Masuk</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $masuk }}</div>
                     </a>
                   </div>
                   <div class="col-auto">
@@ -40,7 +40,7 @@
                   <div class="col mr-2">
                   <a href="laporan_stok.php">
                     <div class="text-s font-weight-bold text-success text-uppercase mb-1">Stok Obat</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stok }}</div>
                     </a>
                   </div>
                   <div class="col-auto">
@@ -60,7 +60,7 @@
                   <div class="col mr-2">
                   <a href="laporan_keluar.php">
                     <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Obat Keluar</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $keluar }}</div>
                     </a>
                   </div>
                   <div class="col-auto">

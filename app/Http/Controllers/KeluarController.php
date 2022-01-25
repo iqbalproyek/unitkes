@@ -70,13 +70,7 @@ class KeluarController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Keluar  $keluar
-     * @return \Illuminate\Http\Response
-     */
+    // update obat keluar dan update stok
     public function update(Request $request, $id)
     {
         $request->validate([
