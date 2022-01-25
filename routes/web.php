@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiPasienController;
 use App\Http\Controllers\CekController;
+use App\Http\Controllers\DashController;
 use App\Http\Controllers\DashFarmasiController;
 use App\Http\Controllers\DashMedisController;
 use App\Http\Controllers\KeluarController;
@@ -31,10 +32,7 @@ use Illuminate\Support\Facades\Storage;
 Route::middleware('guest')->group(function(){
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'create'])->name('login');
-
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', [DashController::class, 'index'])->name('dash');
 
     Route::get('dashboard', function () {
         return view('dashboard');

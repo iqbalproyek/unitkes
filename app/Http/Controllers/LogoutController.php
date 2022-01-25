@@ -11,6 +11,6 @@ class LogoutController extends Controller
     {
         Auth::logout();
         notify()->success('Anda berhasil Logout');
-        return redirect()->route('login');
+        return redirect()->route('dash');
     }
 }
