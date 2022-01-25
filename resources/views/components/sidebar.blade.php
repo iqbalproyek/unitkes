@@ -29,7 +29,7 @@
 
         @elseif(Auth::user()->role == "medis")
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ (request()->is('medis')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('medis')) || request()->is('laporan/*') ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('dashboard.medis') }}">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span></a>

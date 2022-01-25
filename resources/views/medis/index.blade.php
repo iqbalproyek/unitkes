@@ -17,7 +17,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="tb_laporandsn.php">
+                  <a href="/laporan/dosen">
                     <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Dosen</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dsn }}</div>
                     </a>
@@ -36,7 +36,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="tb_laporanmhs.php">
+                  <a href="/laporan/mahasiswa">
                     <div class="text-s font-weight-bold text-success text-uppercase mb-1">Mahasiswa</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mhs }}</div>
                     </a>
@@ -55,7 +55,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="tb_laporankry.php">
+                  <a href="/laporan/pegawai">
                     <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Karyawan</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pgw }}</div>
                     </a>
@@ -78,7 +78,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="tb_laporansuratsehat.php">
+                        <a href="/laporan/sehat">
                           <div class="text-s font-weight-bold text-info text-uppercase mb-1">Surat Keterangan Kesehatan</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $sehat }}</div>
                           </a>
@@ -97,7 +97,7 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="tb_laporansuratsakit.php">
+                        <a href="/laporan/sakit">
                           <div class="text-s font-weight-bold text-danger text-uppercase mb-1">Surat Keterangan Sakit</div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $izin }}</div>
                           </a>

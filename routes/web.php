@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function(){
     //Medis
     Route::middleware('medis')->group(function(){
         Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
+        Route::get('laporan/{id}', [DashMedisController::class, 'laporan'])->name('laporan');
+        Route::get('laporan/{id}/{from}/{to}', [DashMedisController::class, 'laporanfilter'])->name('laporan.filter');
 
         // pasien
         Route::resource('pasien', PasienController::class);
