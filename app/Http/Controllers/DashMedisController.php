@@ -40,7 +40,43 @@ class DashMedisController extends Controller
         ]);
     }
 
-    public function laporan($id){
+    public function laporan($id, $fromdate = '', $todate = '')
+    {
+    if($fromdate && $todate){
+        if ($id == 'dosen'){
+            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
+                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
+                        ->where('pasien.kategori', 'Dosen')
+                        ->whereBetween('periksa.tanggal', [$fromdate, $todate])
+                        ->get();
+        }else
+        if($id == 'mahasiswa'){
+            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
+                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
+                        ->where('pasien.kategori', 'Mahasiswa')
+                        ->whereBetween('periksa.tanggal', [$fromdate, $todate])
+                        ->get();
+        }else
+        if($id == 'pegawai'){
+            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
+                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
+                        ->where('pasien.kategori', 'pegawai')
+                        ->whereBetween('periksa.tanggal', [$fromdate, $todate])
+                        ->get();
+        }
+        if($id == 'sakit'){
+            $data = Sakit::join('surat', 'surat.id', '=', 'id_surat')
+                        ->where('surat.jenis_surat', 'sakit')
+                        ->whereBetween('surat.tanggal', [$fromdate, $todate])
+                        ->get();
+        }
+        if($id == 'sehat'){
+            $data = Sehat::join('surat', 'surat.id', '=', 'id_surat')
+                        ->where('surat.jenis_surat', 'sehat')
+                        ->whereBetween('surat.tanggal', [$fromdate, $todate])
+                        ->get();
+        }
+    }else{
         if ($id == 'dosen'){
             $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
                         ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
@@ -69,50 +105,12 @@ class DashMedisController extends Controller
                         ->where('surat.jenis_surat', 'sehat')
                         ->get();
         }
+    }
+
         return view('medis.laporan',[
             'data' => $data,
             'jenis' => $id,
         ]);
     }
 
-    public function laporanfilter($id, $from, $to)
-    {
-        if ($id == 'dosen'){
-            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
-                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
-                        ->where('pasien.kategori', 'Dosen')
-                        ->whereBetween('periksa.tanggal', [$from, $to])
-                        ->get();
-        }else
-        if($id == 'mahasiswa'){
-            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
-                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
-                        ->where('pasien.kategori', 'Mahasiswa')
-                        ->whereBetween('periksa.tanggal', [$from, $to])
-                        ->get();
-        }else
-        if($id == 'pegawai'){
-            $data = Rekam::join('periksa', 'periksa.id', '=', 'id_rekam')
-                        ->join('pasien', 'pasien.id', '=', 'periksa.id_pasien')
-                        ->where('pasien.kategori', 'pegawai')
-                        ->whereBetween('periksa.tanggal', [$from, $to])
-                        ->get();
-        }
-        if($id == 'sakit'){
-            $data = Sakit::join('surat', 'surat.id', '=', 'id_surat')
-                        ->where('surat.jenis_surat', 'sakit')
-                        ->whereBetween('surat.tanggal', [$from, $to])
-                        ->get();
-        }
-        if($id == 'sehat'){
-            $data = Sehat::join('surat', 'surat.id', '=', 'id_surat')
-                        ->where('surat.jenis_surat', 'sehat')
-                        ->whereBetween('surat.tanggal', [$from, $to])
-                        ->get();
-        }
-        return view('medis.laporan_filter',[
-            'data' => $data,
-            'jenis' => $id,
-        ]);
-    }
 }

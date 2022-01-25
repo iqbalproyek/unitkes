@@ -54,8 +54,7 @@ Route::middleware('auth')->group(function(){
     //Medis
     Route::middleware('medis')->group(function(){
         Route::get('medis', [DashMedisController::class, 'index'])->name('dashboard.medis');
-        Route::get('laporan/{id}', [DashMedisController::class, 'laporan'])->name('laporan');
-        Route::get('laporan/{id}/{from}/{to}', [DashMedisController::class, 'laporanfilter'])->name('laporan.filter');
+        Route::get('laporan/{id}/{fromdate?}/{todate?}', [DashMedisController::class, 'laporan'])->name('laporan');
 
         // pasien
         Route::resource('pasien', PasienController::class);
@@ -80,7 +79,7 @@ Route::middleware('auth')->group(function(){
 
     Route::middleware('farmasi')->group(function(){
         Route::get('farmasi', [DashFarmasiController::class, 'index'])->name('dashboard.farmasi');
-        Route::get('laporan/obat/{id}', [DashFarmasiController::class, 'laporanfarmasi'])->name('laporanfarmasi');
+        Route::get('farmasi/obat/{id}/{from?}/{to?}', [DashFarmasiController::class, 'laporanfarmasi'])->name('laporanfarmasi');
         Route::resource('obat/stok', StokController::class);
         Route::resource('obat/masuk', MasukController::class);
         Route::put('obat/masuk/{id}/stok', [MasukController::class, 'tambahstok'])->name('tambahstok');

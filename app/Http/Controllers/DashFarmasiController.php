@@ -19,8 +19,25 @@ class DashFarmasiController extends Controller
         ]);
     }
 
-    public function laporanfarmasi($id)
+    public function laporanfarmasi($id, $from = null, $to = null)
     {
+    if($from && $to){
+        if($id == "stok"){
+            $data = Stok::orderby('id', 'desc')
+                        ->whereBetween('expired', [$from, $to])
+                        ->get();
+        }else
+        if($id == "masuk"){
+            $data = Masuk::join('obatstok', 'obatstok.id', '=', 'id_obat')
+                        ->whereBetween('obatmasuk.tgl_masuk', [$from, $to])
+                        ->get();
+        }else
+        if($id == "keluar"){
+            $data = Keluar::join('obatstok', 'obatstok.id', '=', 'id_obat')
+                        ->whereBetween('obatkeluar.tgl_keluar', [$from, $to])
+                        ->get();
+        }
+    }else{
         if($id == "stok"){
             $data = Stok::orderby('id', 'desc')->get();
         }else
@@ -32,6 +49,7 @@ class DashFarmasiController extends Controller
             $data = Keluar::join('obatstok', 'obatstok.id', '=', 'id_obat')
                         ->get();
         }
+    }
         return view('farmasi.laporan',[
             'data' => $data,
             'jenis' => $id,

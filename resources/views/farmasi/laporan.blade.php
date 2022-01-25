@@ -29,7 +29,6 @@
           </div>
           <br>
 
-
         <div class="card shadow mt-3">
           <div class="card-header bg-primary text-white ">
               Tabel {{ $jenis2 }}
@@ -44,8 +43,17 @@
                     <input type="date" name="to_date" id="to_date" class="form-control">
                 </div>
 
+                <script>
+                    var	from = document.getElementById('from_date');
+                    var	to = document.getElementById('to_date');
+                    function fill(id){
+                    javascript:location.href='/farmasi/obat/'+id+'/'+from.value+'/'+to.value;
+                    }
+                </script>
+
                 <div class="col-md-3">
-                <button class="btn btn-md btn-secondary" type="submit" name="filter" id="filter">Filter</button>
+                    <a href="/farmasi/obat/{{ $jenis }}" class="btn btn-sm btn-danger" type="button">Batal</a>
+                <button class="btn btn-md btn-secondary" onclick="fill('{{ $jenis }}')" type="button" name="filter" id="filter">Filter</button>
                 </div>
             </div>
             </form>

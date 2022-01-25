@@ -19,7 +19,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="laporan_masuk.php">
+                  <a href="/farmasi/obat/masuk">
                     <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Obat Masuk</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $masuk }}</div>
                     </a>
@@ -38,7 +38,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="laporan_stok.php">
+                  <a href="/farmasi/obat/stok">
                     <div class="text-s font-weight-bold text-success text-uppercase mb-1">Stok Obat</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $stok }}</div>
                     </a>
@@ -58,7 +58,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                  <a href="laporan_keluar.php">
+                  <a href="/farmasi/obat/keluar">
                     <div class="text-s font-weight-bold text-warning text-uppercase mb-1">Obat Keluar</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $keluar }}</div>
                     </a>

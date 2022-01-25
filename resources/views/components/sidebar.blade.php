@@ -60,7 +60,7 @@
 
         @elseif(Auth::user()->role == "farmasi")
         <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ (request()->is('farmasi')) || (request()->is('laporan/obat/*')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('farmasi')) || (request()->is('farmasi/obat/*')) || (request()->is('farmasi/obat/*/*/*')) ? 'active' : '' }}">
                 <a class="nav-link" href="/farmasi">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span></a>

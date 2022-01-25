@@ -36,7 +36,31 @@
           <div class="card-header bg-primary text-white ">
               Tabel Riwayat {{ $jenis2 }}
           </div>
-          @include('medis.form_filter_laporan')
+
+          <form method="post">
+            <div class="card-body row">
+                <div class="col-md-3">
+                      <input type="date" name="from_date" id="from_date" class="form-control">
+                  </div>
+
+                  <div class="col-md-3">
+                      <input type="date" name="to_date" id="to_date" class="form-control">
+                  </div>
+                <script>
+                    var	from = document.getElementById('from_date');
+                    var	to = document.getElementById('to_date');
+                    function fill(id){
+                    javascript:location.href='/laporan/'+id+'/'+from.value+'/'+to.value;
+                    }
+                </script>
+
+                  <div class="col-md-3">
+                      <a href="/laporan/{{ $jenis }}" class="btn btn-sm btn-danger" type="button">Batal</a>
+                  <button class="btn btn-md btn-secondary" onclick="fill('{{ $jenis }}')" type="button" name="filter" id="filter">Filter</button>
+                  </div>
+              </div>
+              </form>
+
         @if($jenis == 'dosen' || $jenis == 'mahasiswa' || $jenis == 'pegawai')
             <table class="table table-bordered table-stripped" id="tbdosen">
             <thead>
