@@ -71,7 +71,7 @@
 
             <!-- Heading -->
 
-            <li class="nav-item {{ (request()->is('obat/stok')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('obat/stok') || request()->is('obat/stok/*/*')) ? 'active' : '' }}">
                 <a class="nav-link" href="/obat/stok">
                 <i class="fas fa-medkit"></i>
                 <span>Stok Obat</span></a>

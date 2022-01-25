@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function(){
         Route::put('obat/masuk/{id}/stok', [MasukController::class, 'tambahstok'])->name('tambahstok');
         Route::resource('obat/keluar', KeluarController::class);
         Route::put('obat/keluar/{id}/stok', [KeluarController::class, 'tambahstok2'])->name('tambahstok2');
+        Route::get('obat/stok/{from}/{to}', [StokController::class, 'filter'])->name('stok.filter');
     });
 });
 

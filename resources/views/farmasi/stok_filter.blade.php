@@ -37,12 +37,13 @@
                   <input type="date" name="to_date" id="to_date" class="form-control">
               </div>
               <script>
-                  var	from = document.getElementById('from_date');
-                  var	to = document.getElementById('to_date');
-                  function fill(){
-                  javascript:location.href='/obat/stok/'+from.value+'/'+to.value;
-                  }
-              </script>
+                var	from = document.getElementById('from_date');
+                var	to = document.getElementById('to_date');
+                function fill(){
+                javascript:location.href='/obat/stok/'+from.value+'/'+to.value;
+                }
+            </script>
+
               <div class="col-md-3">
                 <a href="/obat/stok" class="btn btn-sm btn-danger" type="button">Batal</a>
               <button class="btn btn-md btn-secondary" onclick="fill()" type="button" name="filter" id="filter">Filter Expired</button>

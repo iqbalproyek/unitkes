@@ -67,5 +67,12 @@ class StokController extends Controller
         notify()->success('Data Berhasil Dihapus', 'Berhasil');
         return back();
     }
-    
+
+    public function filter($from, $to)
+    {
+        return view('farmasi.stok_filter',[
+            'stok' => Stok::whereBetween('expired', [$from, $to])->get(),
+        ]);
+    }
+
 }
