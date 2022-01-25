@@ -77,9 +77,35 @@ class KeluarController extends Controller
      * @param  \App\Models\Keluar  $keluar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Keluar $keluar)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tgl_keluar2' => ['required'],
+            'jmlh_keluar2' => ['required'],
+        ]);
+
+        $id_stok = Keluar::where('id', $id)->pluck('id_obat')->first();
+        $jumlah_sekarang = Stok::where('id', $id_stok)->pluck('jumlah')->first();
+        $jumlah_keluar_sekarang = Keluar::where('id', $id)->pluck('jmlh_keluar')->first();
+
+        if($request->jmlh_keluar2 >= $jumlah_keluar_sekarang){
+            $selisih = $request->jmlh_keluar2 - $jumlah_keluar_sekarang;
+            $stok = $jumlah_sekarang - $selisih;
+        }else{
+            $selisih = $jumlah_keluar_sekarang - $request->jmlh_keluar2;
+            $stok = $jumlah_sekarang + $selisih;
+        }
+
+        Keluar::where('id', $id)->update([
+            'tgl_keluar' => $request->tgl_keluar2,
+            'jmlh_keluar' => $request->jmlh_keluar2,
+        ]);
+        Stok::where('id', $id_stok)->update([
+            'jumlah' => $stok,
+        ]);
+
+        notify()->success('Data berhasil Diedit', 'berhasil');
+        return back();
     }
 
     // hapus keluar

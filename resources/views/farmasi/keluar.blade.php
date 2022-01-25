@@ -246,7 +246,12 @@ $(document).ready(function() {
 // modal hapus
 function modalhapus(id){
         $('#modalhapus').attr('action', '/obat/keluar/' + id);
-    }
+}
+
+//fungsi modal edit validation error
+@if ($errors->has('tgl_keluar2')|| $errors->has('jmlh_keluar2'))
+       $('#editBarang').modal('show');
+@endif
 
 // fungsi sprintf
 function p(i,w,z){z=z||0;w=w||8;i+='';var o=i.length%w;return o?[...Array(w-o).fill(z),...i].join(''):i;}

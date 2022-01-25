@@ -45,17 +45,20 @@
             @method('put')
         <div class="form-group">
             <label for="tgl_keluar2" class="m-0 font-weight-bold text-dark">Tanggal</label>
-            <input type="date" class="form-control" name="tgl_keluar2" id="tgl_keluar2" value="{{ old('tgl_keluar') }}">
+            <input type="date" class="form-control @error('tgl_keluar2') is-invalid @enderror me-2" name="tgl_keluar2" id="tgl_keluar2" value="{{ old('tgl_keluar') }}">
+            @error('tgl_keluar2')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="nik" class="m-0 font-weight-bold text-dark">NIM/NIK</label>
-            <input type="text" class="form-control" name="nik2" id="nik2" required="" readonly value="">
+            <input type="text" class="form-control" name="nik2" id="nik2" required="" disabled value="">
         </div>
 
         <div class="form-group">
             <label for="nama" class="m-0 font-weight-bold text-dark">Nama Pasien</label>
-            <input type="text" class="form-control" name="nama" id="nama" required="" value="" readonly>
+            <input type="text" class="form-control" name="nama" id="nama" required="" value="" disabled>
         </div>
 
         <div class="form-group">
@@ -96,7 +99,10 @@
 
         <div class="form-group">
             <label for="jmlh_keluar2" class="m-0 font-weight-bold text-dark">Jumlah Keluar</label>
-            <input type="number" min="1" class="form-control" name="jmlh_keluar2" id="jmlh_keluar2" value="{{ old('jmlh_keluar') }}">
+            <input type="number" min="1" class="form-control @error('jmlh_keluar2') is-invalid @enderror me-2" name="jmlh_keluar2" id="jmlh_keluar2" value="{{ old('jmlh_keluar') }}">
+            @error('jmlh_keluar2')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="modal-footer">
