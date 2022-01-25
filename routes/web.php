@@ -80,6 +80,7 @@ Route::middleware('auth')->group(function(){
 
     Route::middleware('farmasi')->group(function(){
         Route::get('farmasi', [DashFarmasiController::class, 'index'])->name('dashboard.farmasi');
+        Route::get('laporan/obat/{id}', [DashFarmasiController::class, 'laporanfarmasi'])->name('laporanfarmasi');
         Route::resource('obat/stok', StokController::class);
         Route::resource('obat/masuk', MasukController::class);
         Route::put('obat/masuk/{id}/stok', [MasukController::class, 'tambahstok'])->name('tambahstok');
