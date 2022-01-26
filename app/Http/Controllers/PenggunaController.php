@@ -25,8 +25,10 @@ class PenggunaController extends Controller
         ]);
     }
 
-    public function riwayat($nik)
+    public function riwayat($nik = null)
     {
+        if($nik){
+
         $pasien = Pasien::where('nik', $nik)->get();
         $id = Pasien::where('nik', $nik)->pluck('id')->first();
 
@@ -48,6 +50,10 @@ class PenggunaController extends Controller
             'keluar' => $keluar,
             'sakit' => $sakit,
         ]);
+
+        }else{
+            return back();
+        }
     }
 
     public function surat($id)

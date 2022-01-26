@@ -42,7 +42,7 @@ Route::middleware('guest')->group(function(){
 
     Route::middleware('pengguna')->group(function(){
         Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna');
-        Route::get('pengguna/riwayat/{nik}', [PenggunaController::class, 'riwayat'])->name('riwayat');
+        Route::get('pengguna/riwayat/{nik?}', [PenggunaController::class, 'riwayat'])->name('riwayat');
         Route::get('bukti/sakit/{id}', [PenggunaController::class, 'surat'])->name('surat');
     });
 });

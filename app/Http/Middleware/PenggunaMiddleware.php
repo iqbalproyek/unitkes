@@ -17,6 +17,7 @@ class PenggunaMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (session()->get('NIM') == ''){
+            notify()->error('Silahkan Login Terlebih Dahulu', 'Access Denied');
             return back();
         }
         return $next($request);
