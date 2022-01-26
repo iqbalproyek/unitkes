@@ -48,7 +48,7 @@
                             <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="riwayat_pasien.php">
+                                <a href="{{ route('riwayat', session()->get('NIM') ?? '') }}">
                                   <div class="text-s font-weight-bold text-primary text-uppercase mb-1">Riwayat Pasien</div>
                                   <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                   </a>
