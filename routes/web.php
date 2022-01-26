@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiLoginController;
 use App\Http\Controllers\ApiPasienController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\StokController;
@@ -32,12 +34,16 @@ use Illuminate\Support\Facades\Storage;
 Route::middleware('guest')->group(function(){
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'create'])->name('login');
+    Route::get('api/login', [ApiLoginController::class, 'index'])->name('api.login');
+    Route::post('api/login', [ApiLoginController::class, 'create'])->name('api.login');
+    Route::post('api/logout', [ApiLoginController::class, 'destroy'])->name('api.logout');
     Route::get('/', [DashController::class, 'index'])->name('dash');
 
-    Route::get('dashboard', function () {
-        return view('dashboard');
+    Route::middleware('pengguna')->group(function(){
+        Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna');
     });
 });
+
 
 Route::middleware('auth')->group(function(){
     Route::get('cek', CekController::class)->name('cek.role');
@@ -85,6 +91,7 @@ Route::middleware('auth')->group(function(){
         Route::put('obat/keluar/{id}/stok', [KeluarController::class, 'tambahstok2'])->name('tambahstok2');
         Route::get('obat/stok/{from}/{to}', [StokController::class, 'filter'])->name('stok.filter');
     });
+
 });
 
 
