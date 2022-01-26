@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function(){
         Route::get('surat/kesehatan/{id}', [SuratController::class, 'showsehat'])->name('sehat.show');
         Route::put('surat/kesehatan/keterangan/{id}', [SuratController::class, 'updatesehat'])->name('sehat.update');
         Route::put('surat/kesehatan/detail/{id}', [SuratController::class, 'updatesehatd'])->name('sehatd.update');
+        Route::get('surat/kesehatan/{kesehatan}/bukti', [SuratController::class, 'suratsehat'])->name('bukti.sehat');
     });
 
     Route::middleware('farmasi')->group(function(){

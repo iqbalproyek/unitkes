@@ -211,4 +211,14 @@ class SuratController extends Controller
         return back();
     }
 
+    public function suratsehat($id)
+    {
+        $id_sehat = Sehat::where('id_surat', $id)->pluck('id')->first();
+        return view('medis.sehat_bukti', [
+            'surat' => Surat::where('id', $id)->first(),
+            'sehat' => Sehat::where('id_surat', $id)->first(),
+            'sehatd' => Sehatd::where('id_sehat', $id_sehat)->first(),
+        ]);
+    }
+
 }

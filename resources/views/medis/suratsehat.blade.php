@@ -183,7 +183,7 @@
                   <td>{{ $row->nama }}</td>
                   <td>{{ $row->pekerjaan }}</td>
                   <td>
-                      <a href="print_suratsehat.php?id=" target="_blank" class="btn btn-sm btn-secondary">Print</a>
+                      <a href="/surat/kesehatan/{{ $row->id }}/bukti" target="_blank" class="btn btn-sm btn-secondary">Print</a>
                       <a href="/surat/kesehatan/{{ $row->id }}" class="btn btn-sm btn-info">Detail</a>
                       <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusBarang" onclick="modalhapus({{ $row->id }})">Hapus</a>
                   </td>
