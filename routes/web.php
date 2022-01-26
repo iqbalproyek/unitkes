@@ -44,6 +44,8 @@ Route::middleware('guest')->group(function(){
         Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna');
         Route::get('pengguna/riwayat/{nik?}', [PenggunaController::class, 'riwayat'])->name('riwayat');
         Route::get('bukti/sakit/{id}', [PenggunaController::class, 'surat'])->name('surat');
+        Route::get('pengguna/detail/sakit/{id}', [PenggunaController::class, 'detailsakit'])->name('detailsakit');
+        Route::get('pengguna/detail/medis/{periksa}', [PenggunaController::class, 'showmedis'])->name('showmedis');
     });
 });
 

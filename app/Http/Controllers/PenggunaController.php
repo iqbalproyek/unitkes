@@ -63,4 +63,21 @@ class PenggunaController extends Controller
             'sakit' => Sakit::where('id_surat', $id)->first(),
         ]);
     }
+
+    public function detailsakit($id)
+    {
+        return view('pengguna.sakit_detail', [
+            'surat' => Surat::where('id', $id)->first(),
+            'sakit' => Sakit::where('id_surat', $id)->first(),
+        ]);
+    }
+
+    public function showmedis(Periksa $periksa)
+    {
+        return view('pengguna.rekam_detail', [
+            'periksa' => $periksa,
+            'rekam' => Rekam::where('id_rekam', $periksa->id)->firstOrFail(),
+            'pasien' => Pasien::where('id', $periksa->id_pasien)->pluck('kelamin')->first(),
+        ]);
+    }
 }

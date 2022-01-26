@@ -136,7 +136,7 @@
                   <td>{{ $row->pemeriksaan }}</td>
                   <td>{{ $row->tindakan }}</td>
                   <td>
-                      <a href="{{ $row->id }}" class="btn btn-sm btn-info">Detail</a>
+                      <a href="/pengguna/detail/medis/{{ $row->id }}" class="btn btn-sm btn-info">Detail</a>
                   </td>
               </tr>
               @endforeach
@@ -212,7 +212,7 @@
                   <td>{{ $row->no_surat }}</td>
                   <td>{{ $row->total_izin }}</td>
                   <td>
-                  <a href="{{ $row->id }}" class="btn btn-sm btn-info">Detail</a>
+                  <a href="/pengguna/detail/sakit/{{ $row->id }}" class="btn btn-sm btn-info">Detail</a>
                   <a href="/bukti/sakit/{{ $row->id }}" target="_blank" class="btn btn-sm btn-secondary">Print</a>
                   </td>
               </tr>
