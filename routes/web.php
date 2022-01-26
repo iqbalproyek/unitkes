@@ -38,6 +38,7 @@ Route::middleware('guest')->group(function(){
     Route::post('api/login', [ApiLoginController::class, 'create'])->name('api.login');
     Route::post('api/logout', [ApiLoginController::class, 'destroy'])->name('api.logout');
     Route::get('/', [DashController::class, 'index'])->name('dash');
+    Route::get('data/obat', [PenggunaController::class, 'obat'])->name('obat.data');
 
     Route::middleware('pengguna')->group(function(){
         Route::get('pengguna', [PenggunaController::class, 'index'])->name('pengguna');

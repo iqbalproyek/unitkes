@@ -36,7 +36,7 @@ class ApiLoginController extends Controller
             $name = $result->data->name;
 
             notify()->success("Selamat Datang $name", "Login Berhasil");
-            return redirect('/pengguna');
+            return redirect('/');
         }else{
             notify()->error("User tidak ditemukan", "Login Gagal");
             return redirect()->route('api.login');

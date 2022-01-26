@@ -1,5 +1,5 @@
 <x-app-layout2>
-    
+
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
@@ -67,8 +67,8 @@
                             <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="jenis_obat.php">
-                                  <div class="text-s font-weight-bold text-success text-uppercase mb-1">Jenis Obat</div>
+                                <a href="/data/obat">
+                                  <div class="text-s font-weight-bold text-success text-uppercase mb-1">Data Obat</div>
                                   <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                   </a>
                                 </div>
@@ -94,19 +94,18 @@
                         <h1 class="h3 mb-0 text-gray-800">Pengumuman</h1>
                     </div>
 
-                       {{-- foreach --}}
+                       @foreach($pengumuman as $row)
                         <div class="card border-secondary shadow mt-3">
                         <div class="card-header bg-white text-dark font-weight-bold">
-                          <h5 class="font-weight-bold"></h5>
-                          <p><i class="fas fa-user-circle" style="margin-right: 3px;"></i>by admin | </p>
+                          <h5 class="font-weight-bold">{{ $row->judul }}</h5>
+                          <p><i class="fas fa-user-circle" style="margin-right: 3px;"></i>by admin | {{ Carbon\Carbon::parse($row->tanggal)->format('d-m-Y') }}</p>
                         </div>
                             <div class="card-body">
-
+                                {!! $row->isi !!}
                             </div>
                         </div>
-                        {{-- endforeach --}}
+                        @endforeach
                 </div>
-
                 </div>
-
+                <br>
 </x-app-layout2>

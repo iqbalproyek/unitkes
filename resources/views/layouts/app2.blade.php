@@ -19,6 +19,13 @@
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
   <style type="text/css"> .notify{ z-index: 1000000; } </style>
   @notifyCss
+
+  <!-- Custom styles for this page -->
+  <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="/template/vendor/Buttons/css/buttons.bootstrap4.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/template/vendor/fixedheader/css/fixedHeader.bootstrap4.min.css"/>
+<link rel="stylesheet" type="text/css" href="/template/vendor/responsive/css/responsive.bootstrap4.min.css"/>
 </head>
 <x:notify-messages />
 <body id="page-top">
@@ -138,6 +145,23 @@
   <script src="/template/js/demo/chart-area-demo.js"></script>
   <script src="/template/js/demo/chart-pie-demo.js"></script>
   @notifyJs
+
+  <!-- Page level plugins -->
+  <script src="/template/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <script src="/template/vendor/Buttons/js/dataTables.buttons.min.js"></script>
+  <script src="/template/vendor/Buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="/template/vendor/JSZip/jszip.min.js"></script>
+  <script src="/template/vendor/pdfmake/pdfmake.min.js"></script>
+  <script src="/template/vendor/pdfmake/vfs_fonts.js"></script>
+  <script src="/template/vendor/Buttons/js/buttons.html5.min.js"></script>
+  <script src="/template/vendor/Buttons/js/buttons.print.min.js"></script>
+  <script src="/template/vendor/Buttons/js/buttons.colVis.min.js"></script>
+
+  <script src="/template/vendor/fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="/template/vendor/responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/template/vendor/responsive/js/responsive.bootstrap4.min.js"></script>
 </body>
 
 </html>
